@@ -9,15 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link add_task#newInstance} factory method to
+ * Use the {@link AddTaskFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class add_task extends Fragment {
+public class AddTaskFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,8 +28,11 @@ public class add_task extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    Spinner year,month,date;
-    public add_task() {
+    Spinner yearSpinner;
+    Spinner monthSpinner;
+    Spinner dateSpinner;
+    Button setTime;
+    public AddTaskFragment() {
         // Required empty public constructor
     }
 
@@ -38,11 +42,11 @@ public class add_task extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment add_task.
+     * @return A new instance of fragment AddTaskFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static add_task newInstance(String param1, String param2) {
-        add_task fragment = new add_task();
+    public static AddTaskFragment newInstance(String param1, String param2) {
+        AddTaskFragment fragment = new AddTaskFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -58,7 +62,6 @@ public class add_task extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-
     }
 
     @Override
@@ -66,70 +69,64 @@ public class add_task extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_task, container, false);
 
-        year = view.findViewById(R.id.year_spinner);
-        month = view.findViewById(R.id.month_spinner);
-        date = view.findViewById(R.id.date_spinner);
-
+        yearSpinner = view.findViewById(R.id.year);
+        monthSpinner = view.findViewById(R.id.month);
+        dateSpinner = view.findViewById(R.id.date);
         ArrayAdapter<CharSequence> yearAdapter = ArrayAdapter.createFromResource(requireContext(),
                 R.array.year_array, android.R.layout.simple_spinner_item);
         yearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        year.setAdapter(yearAdapter);
+        yearSpinner.setAdapter(yearAdapter);
 
         ArrayAdapter<CharSequence> monthAdapter = ArrayAdapter.createFromResource(requireContext(),
                 R.array.month_array, android.R.layout.simple_spinner_item);
         monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        month.setAdapter(monthAdapter);
+        monthSpinner.setAdapter(monthAdapter);
 
         ArrayAdapter<CharSequence> dateAdapter = ArrayAdapter.createFromResource(requireContext(),
                 R.array.date_array, android.R.layout.simple_spinner_item);
         dateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        date.setAdapter(dateAdapter);
+        dateSpinner.setAdapter(dateAdapter);
 
-        // Set OnItemSelectedListener for each spinner
-
-        year.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItem = parent.getItemAtPosition(position).toString();
-                // Handle the selected item here
-                Toast.makeText(requireContext(), "Year Selected: " + selectedItem, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Handle the situation where nothing is selected
-            }
-        });
-
-        month.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItem = parent.getItemAtPosition(position).toString();
-                // Handle the selected item here
-                Toast.makeText(requireContext(), "Month Selected: " + selectedItem, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Handle the situation where nothing is selected
-            }
-        });
-
-        date.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItem = parent.getItemAtPosition(position).toString();
-                // Handle the selected item here
-                Toast.makeText(requireContext(), "Date Selected: " + selectedItem, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Handle the situation where nothing is selected
-            }
-        });
+        setListeners();
 
         return view;
     }
 
+    private void setListeners() {
+        yearSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Handle the situation where nothing is selected for the year spinner
+            }
+        });
+
+        monthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Handle the situation where nothing is selected for the month spinner
+            }
+        });
+
+        dateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
 }
