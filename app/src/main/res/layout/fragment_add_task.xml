@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".add_task">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_x="2dp"
+        android:layout_y="1dp"
+        android:textColor="#000000"
+        android:textSize="24dp"
+
+        />
+
+    <TextView
+        android:id="@+id/topic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="24dp"
+        android:layout_y="40dp"
+        android:text="Add Task"
+        android:textColor="#000000"
+        android:textSize="40dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="27dp"
+        android:layout_y="150dp"
+        android:text="Title"
+        android:textColor="#000000"
+        android:textSize="24dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="9dp"
+        android:layout_height="wrap_content"
+        android:layout_x="75dp"
+        android:layout_y="149dp"
+        android:text="*"
+        android:textColor="#CA1111" />
+
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="353dp"
+        android:layout_height="wrap_content"
+        android:layout_x="27dp"
+        android:layout_y="182dp"
+        android:ems="10"
+        android:hint="title"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColor="#454545"
+        android:textSize="24dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="28dp"
+        android:layout_y="247dp"
+        android:text="Description"
+        android:textColor="#000000"
+        android:textSize="24dp" />
+
+    <EditText
+        android:id="@+id/editTextTextMultiLine"
+        android:layout_width="352dp"
+        android:layout_height="108dp"
+        android:layout_x="30dp"
+        android:layout_y="281dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:singleLine="false"
+        android:textColor="#454545"
+        android:background="@drawable/editarea_border"
+        android:hint="description....."
+        android:textSize="24dp"
+        />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="28dp"
+        android:layout_y="408dp"
+        android:text="Year"
+        android:textColor="#000000"
+        android:textSize="24dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="158dp"
+        android:layout_y="405dp"
+        android:text="Month"
+        android:textColor="#000000"
+        android:textSize="24dp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="284dp"
+        android:layout_y="404dp"
+        android:text="Date"
+        android:textColor="#000000"
+        android:textSize="24dp" />
+
+    <Spinner
+        android:id="@+id/year_spinner"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_x="29dp"
+        android:layout_y="439dp"
+        android:minHeight="48dp"
+        android:background="@drawable/editarea_border"
+        />
+
+    <Spinner
+        android:id="@+id/date_spinner"
+        android:layout_width="101dp"
+        android:layout_height="48dp"
+        android:layout_x="282dp"
+        android:layout_y="436dp"
+        android:background="@drawable/editarea_border"
+        />
+
+    <Spinner
+        android:id="@+id/month_spinner"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:layout_x="157dp"
+        android:layout_y="438dp"
+        android:background="@drawable/editarea_border"
+        />
+
+
+</AbsoluteLayout>
