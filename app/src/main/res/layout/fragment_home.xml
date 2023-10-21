@@ -4,14 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context=".HomeFragment"
+    android:background="@drawable/homepage_bg">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="hello home"
-        android:textSize="25dp"
-        android:layout_centerInParent="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="224dp"
+        android:layout_marginBottom="773dp"
+        android:text="My Day"
+        android:textSize="50dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/txt_homePageDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="106dp"
+        android:layout_marginEnd="113dp"
+        android:layout_marginBottom="712dp"
+        android:text="WED, 14 October"
+        android:textColor="@color/black"
+        android:textSize="30dp" />
 
 </RelativeLayout>
