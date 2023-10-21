@@ -39,4 +39,14 @@
         android:textColor="@color/black"
         android:textSize="30dp" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="@color/darkBlue"
+        android:layout_margin="32dp"
+        android:src="@drawable/icon_add"/>
+
 </RelativeLayout>
