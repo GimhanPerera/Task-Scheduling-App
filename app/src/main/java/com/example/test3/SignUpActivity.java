@@ -8,41 +8,41 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class LoginActivity extends AppCompatActivity {
-
-    private Button btn_logIn;
-    private TextView txt_signUp;
+public class SignUpActivity extends AppCompatActivity {
+    private Button btn_signUp;
+    private TextView txt_backToSignIn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_sign_up);
 
-        btn_logIn = findViewById(R.id.btn_login);
-        txt_signUp = findViewById(R.id.txt_signup);
-        btn_logIn.setOnClickListener(new View.OnClickListener() {
+        btn_signUp = findViewById(R.id.btn_SignUp);//Sign up button
+        txt_backToSignIn = findViewById(R.id.SignInLink);
+        btn_signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btnLogin();
+                sign_up();
             }
         });
-        txt_signUp.setOnClickListener(new View.OnClickListener() {
+        txt_backToSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToSignUpPage();
+                goToSignInPage();
             }
         });
     }
 
-    public void btnLogin(){
+    public void sign_up(){
 
-        //DO THE LOGIN VALIDATION HERE
+        //DO SIGN UP VALIDATION HERE
 
         Intent intent=new Intent(this,HomeActivity.class);
         startActivity(intent);
     }
 
-    public void goToSignUpPage(){
-        Intent intent=new Intent(this,SignUpActivity.class);
+    public void goToSignInPage(){
+
+        Intent intent=new Intent(this,LoginActivity.class);
         startActivity(intent);
     }
 }
