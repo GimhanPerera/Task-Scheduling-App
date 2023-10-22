@@ -82,9 +82,10 @@
                 android:textColorHighlight="@color/cardview_dark_background" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
                 android:text="Forgot Password?"
                 android:textColor="@color/darkBlue" />
 
@@ -96,7 +97,8 @@
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/white"
                 android:layout_marginTop="30dp"
-                android:backgroundTint="@color/darkBlue"
+                android:background="@drawable/button_bg"
+                android:backgroundTint="@color/blue"
                 android:text="Login"
                 android:textSize="25sp"
                 app:cornerRadius="20dp" />
@@ -114,16 +116,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="65dp"
-                    android:layout_marginTop="0dp"
+                    android:layout_marginTop="4dp"
                     android:paddingTop="1dp"
                     android:text="Don't have an account?"
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
+                    android:id="@+id/txt_signup"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
+                    android:layout_marginTop="4dp"
                     android:text="  Sign up"
                     android:textColor="@color/darkBlue" />
             </LinearLayout>
