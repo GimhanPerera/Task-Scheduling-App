@@ -11,14 +11,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="24dp"
         android:layout_marginTop="45dp"
-        android:layout_marginEnd="224dp"
-        android:layout_marginBottom="773dp"
         android:text="My Day"
         android:textSize="50dp"
         android:textColor="@color/black"/>
@@ -27,16 +21,30 @@
         android:id="@+id/txt_homePageDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="24dp"
         android:layout_marginTop="106dp"
-        android:layout_marginEnd="113dp"
-        android:layout_marginBottom="712dp"
+        android:layout_marginBottom="210dp"
         android:text="WED, 14 October"
         android:textColor="@color/black"
         android:textSize="30dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/taskRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_homePageDate"
+        android:layout_marginTop="-179dp"
+        android:nestedScrollingEnabled="true"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="@color/darkBlue"
+        android:layout_margin="32dp"
+        android:src="@drawable/icon_add"/>
 
 </RelativeLayout>
