@@ -31,7 +31,6 @@
         android:text="Hi"
         android:textColor="@color/black"
         android:textSize="36dp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/name"
         app:layout_constraintEnd_toStartOf="@+id/profilePic"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,8 +47,9 @@
         android:textColor="@color/black"
         android:textSize="36dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/profileIntro"
         app:layout_constraintEnd_toStartOf="@+id/profilePic"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileIntro" />
 
