@@ -19,13 +19,8 @@
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".mainPage"
+            android:name=".SignUpActivity"
             android:exported="false" />
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.Test3" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

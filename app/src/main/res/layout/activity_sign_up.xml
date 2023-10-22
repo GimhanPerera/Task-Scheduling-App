@@ -124,7 +124,7 @@
                 android:textSize="16sp"
                 android:text="I accept all the terms &amp; conditions" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <Button
                 android:id="@+id/btn_SignUp"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -162,15 +162,7 @@
                     android:textColor="@color/blue"
                     android:textSize="16sp" />
 
-
             </LinearLayout>
-
-
         </LinearLayout>
-
-
     </androidx.cardview.widget.CardView>
-
-
 </LinearLayout>
-
