@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -32,6 +34,11 @@ public class AddTaskFragment extends Fragment {
     Spinner monthSpinner;
     Spinner dateSpinner;
     Button setTime;
+    Button Back;
+    EditText Title;
+    EditText Des;
+    CheckBox notification;
+    HomeFragment homeFragment = new HomeFragment();
     public AddTaskFragment() {
         // Required empty public constructor
     }
@@ -130,3 +137,4 @@ public class AddTaskFragment extends Fragment {
         });
     }
 }
+//changed
