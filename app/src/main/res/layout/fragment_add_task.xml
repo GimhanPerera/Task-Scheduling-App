@@ -41,7 +41,7 @@
         android:textColor="#DD1818" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/et_title"
         android:layout_width="335dp"
         android:layout_height="wrap_content"
         android:layout_x="30dp"

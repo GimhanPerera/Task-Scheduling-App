@@ -9,6 +9,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/myday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -46,5 +47,6 @@
         android:backgroundTint="@color/darkBlue"
         android:layout_margin="32dp"
         android:src="@drawable/icon_add"/>
+
 
 </RelativeLayout>
