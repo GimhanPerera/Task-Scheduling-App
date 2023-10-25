@@ -16,6 +16,9 @@
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
             android:value="true" />
         <activity
+            android:name=".NewPasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".task_layout"
             android:exported="false" />
         <activity
