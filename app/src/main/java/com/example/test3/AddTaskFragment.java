@@ -27,7 +27,24 @@ public class AddTaskFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_task, container, false);
 
+        Button btn_add = view.findViewById(R.id.btn_add);
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Add new task
+                listClass object = listClass.getInstance();
+                EditText title= view.findViewById(R.id.addTask_Title);
+                EditText description= view.findViewById(R.id.addTask_Description);
+                Task newTask = new Task(object.getNextId(),title.getText().toString(),description.getText().toString());
+                object.setNewTask(newTask);
+            }
+        });
+
+
+
 
         return view;
     }
+}
 

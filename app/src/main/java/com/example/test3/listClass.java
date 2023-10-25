@@ -8,7 +8,7 @@ import java.util.List;
 
 public class listClass{
     private static List<Task> taskList = new ArrayList<Task>();
-    private  static int nextId = 4;
+    private  static int nextId = 5;
     private static listClass instance = new listClass();
 
     private listClass() {
@@ -19,13 +19,10 @@ public class listClass{
         Task t0 = new Task(1,"Do homework","Nothing");
         Task t1 = new Task(2,"Do Assignment","Nothing");
         Task t2 = new Task(3,"Say hay","Nothing");
-        Task t3 = new Task(3,"Say it","Nothing");
+        Task t3 = new Task(4,"Say it","Nothing");
         taskList.addAll(Arrays.asList(new Task[]{t0,t1,t2,t3}));
     }
 
-    public static int getNextID(){
-        return nextId+1;
-    }
     public static listClass getInstance(){
         return instance;
     }
@@ -38,6 +35,7 @@ public class listClass{
     }
     public static void setNewTask(Task NewTask) {
         listClass.taskList.add(NewTask);
+        nextId++;
     }
 
     public static int getNextId() {
