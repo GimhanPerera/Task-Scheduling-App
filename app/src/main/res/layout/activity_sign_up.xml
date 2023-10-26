@@ -32,6 +32,7 @@
 
             <TextView
                 android:id="@+id/txt_SignUp"
+                app:errorEnable = ""
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -118,11 +119,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="7dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="7dp"
-                android:layout_marginTop="7dp"
-                android:textSize="16sp"
-                android:text="I accept all the terms &amp; conditions" />
+                android:text="I accept all the terms &amp; conditions"
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/btn_SignUp"

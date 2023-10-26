@@ -2,8 +2,8 @@ package com.example.test3;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.*;
-import androidx.navigation.ui.NavigationUI;
+//import androidx.navigation.*;
+//import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -34,7 +35,11 @@ public class SignUpActivity extends AppCompatActivity {
 
     public void sign_up(){
 
+        EditText txt_FirstName, txt_LastName, txt_Email, txt_Password, txt_ConfirmPassword;
+        Button btn_SignUp;
+
         //DO SIGN UP VALIDATION HERE
+
 
         Intent intent=new Intent(this,HomeActivity.class);
         startActivity(intent);
