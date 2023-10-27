@@ -88,7 +88,9 @@
         android:layout_y="439dp"
         android:background="@drawable/edit_text_background"
         android:minHeight="36dp"
-        tools:ignore="TouchTargetSizeCheck" />
+        tools:ignore="TouchTargetSizeCheck"
+        />
+
 
     <TextView
         android:id="@+id/textView6"
@@ -139,6 +141,15 @@
         android:background="@drawable/edit_text_background"
         android:minHeight="36dp"
         tools:ignore="TouchTargetSizeCheck" />
+    <TextView
+        android:id="@+id/selectedDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="30dp"
+        android:layout_y="500dp"
+        android:text=""
+        android:textSize="18sp"
+        android:textColor="#000000" />
 
     <CheckBox
         android:id="@+id/checkBox"
@@ -201,5 +212,16 @@
         android:textColor="@color/white"
         android:textSize="25sp"
         app:cornerRadius="20dp" />
+
+    <Button
+        android:id="@+id/selectDateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="145dp"
+        android:layout_y="471dp"
+        android:backgroundTint="#AA46F3"
+        android:text="Date Picker"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
 
 </AbsoluteLayout>

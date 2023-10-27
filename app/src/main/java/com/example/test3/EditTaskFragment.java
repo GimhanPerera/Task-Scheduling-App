@@ -1,64 +1,106 @@
 package com.example.test3;
 
+import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import com.example.test3.Model.Task;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link EditTaskFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class EditTaskFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public EditTaskFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment EditTaskFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static EditTaskFragment newInstance(String param1, String param2) {
-        EditTaskFragment fragment = new EditTaskFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+public class EditTaskFragment extends AppCompatActivity {
+    private int selectedYear = 0;
+    private int selectedMonth = 0;
+    private int selectedDay = 0;
+    private TextView selectedDateTextView;
+    private Calendar selectedDateCalendar;
+    private Task updatedTask;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        setContentView(R.layout.fragment_edit_task);
+
+        Intent intent = getIntent();
+        int taskId = intent.getIntExtra("taskId", -1);
+        String taskTitle = intent.getStringExtra("taskTitle");
+        String taskDescription = intent.getStringExtra("taskDescription");
+        int date = intent.getIntExtra("taskDate", 1);
+        int month = intent.getIntExtra("taskMonth", 1);
+
+        // Populate the UI elements with task details
+        EditText editTaskTitle = findViewById(R.id.editTask_Title);
+        EditText editTaskDescription = findViewById(R.id.editTask_Description);
+        selectedDateTextView = findViewById(R.id.selectedDateTextView);
+
+        // Populate other UI elements for date and time
+        editTaskTitle.setText(taskTitle);
+        editTaskDescription.setText(taskDescription);
+
+        // Handle user edits and save changes
+        Button saveButton = findViewById(R.id.btn_done);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Retrieve edited task details from UI elements
+                String editedTitle = editTaskTitle.getText().toString();
+                String editedDescription = editTaskDescription.getText().toString();
+
+                // Create an updated task
+                updatedTask = new Task(taskId, editedTitle, editedDescription, selectedYear, selectedMonth, selectedDay);
+
+                // 3. Set the result to indicate a successful update
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("updatedTask", updatedTask);
+                setResult(RESULT_OK, resultIntent);
+
+                // 4. Finish the EditTaskFragment to return to the previous screen
+                finish();
+            }
+        });
+
+        Button selectDateButton = findViewById(R.id.selectDateButton);
+        selectDateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Show the DatePickerDialog only when the "Select Date" button is clicked
+                showDatePickerDialog();
+            }
+        });
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_task, container, false);
+    private void showDatePickerDialog() {
+        // Initialize the DatePickerDialog with the current date
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        // Handle the selected date
+                        selectedDateCalendar.set(year, month, dayOfMonth);
+
+                        // Extract and store the selected date components
+                        selectedYear = selectedDateCalendar.get(Calendar.YEAR);
+                        selectedMonth = selectedDateCalendar.get(Calendar.MONTH);
+                        selectedDay = selectedDateCalendar.get(Calendar.DAY_OF_MONTH);
+
+                        // Format the selected date as needed and display it in the TextView
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+                        String formattedDate = dateFormat.format(selectedDateCalendar.getTime());
+                        selectedDateTextView.setText(formattedDate);
+                    }
+                },
+                selectedDateCalendar.get(Calendar.YEAR),
+                selectedDateCalendar.get(Calendar.MONTH),
+                selectedDateCalendar.get(Calendar.DAY_OF_MONTH)
+        );
+
+        datePickerDialog.show();
     }
 }

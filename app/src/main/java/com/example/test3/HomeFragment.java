@@ -1,20 +1,14 @@
 package com.example.test3;
 
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavDirections;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.test3.Adapter.ToDoAdapter;
 import com.example.test3.Model.Task;
@@ -81,9 +75,9 @@ public class HomeFragment extends Fragment {
     }
 
     private void fillTaskList() {
-        Task t0 = new Task(1,"Do homework","Nothing");
-        Task t1 = new Task(2,"Do Assignment","Nothing");
-        Task t2 = new Task(3,"Say hay","Nothing");
+        Task t0 = new Task(1,"Do homework","Nothing",2023,10,28);
+        Task t1 = new Task(2,"Do Assignment","Nothing",2023,10,26);
+        Task t2 = new Task(3,"Say hay","Nothing",2023,10,26);
         taskList.addAll(Arrays.asList(new Task[]{t0,t1,t2}));
     }
 }
