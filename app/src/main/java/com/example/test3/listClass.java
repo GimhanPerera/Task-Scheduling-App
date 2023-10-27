@@ -16,10 +16,10 @@ public class listClass{
     }
 
     private void fillTaskList() {
-        Task t0 = new Task(1,"Do homework","Nothing");
-        Task t1 = new Task(2,"Do Assignment","Nothing");
-        Task t2 = new Task(3,"Say hay","Nothing");
-        Task t3 = new Task(4,"Say it","Nothing");
+        Task t0 = new Task(1,"Do homework","Nothing",2023,10,28);
+        Task t1 = new Task(2,"Do Assignment","Nothing",2023,10,26);
+        Task t2 = new Task(3,"Say hay","Nothing",2023,10,26);
+        Task t3 = new Task(4,"Say it","Nothing",2023,10,26);
         taskList.addAll(Arrays.asList(new Task[]{t0,t1,t2,t3}));
     }
 
@@ -45,4 +45,14 @@ public class listClass{
     public static void setNextId(int nextId) {
         listClass.nextId = nextId;
     }
+    public Task getTaskById(int taskId) {
+        for (Task task : taskList) {
+            if (task.getId() == taskId) {
+                return task;
+            }
+        }
+        return null; // Return null if the task with the given ID is not found
+    }
+
 }
+
