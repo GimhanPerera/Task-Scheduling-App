@@ -53,6 +53,19 @@ public class listClass{
         }
         return null; // Return null if the task with the given ID is not found
     }
+    public Task setTaskById(int taskId,String title, String Desc, int year, int month, int date) {
+        for (Task task : taskList) {
+            if (task.getId() == taskId) {
+                task.setTitle(title);
+                task.setDescription(Desc);
+                task.setYear(year);
+                task.setMonth(month);
+                task.setDate(date);
+            }
+        }
+        return null; // Return null if the task with the given ID is not found
+    }
+
 
 }
 

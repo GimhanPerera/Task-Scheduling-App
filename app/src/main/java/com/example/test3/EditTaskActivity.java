@@ -14,34 +14,40 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class EditTaskFragment extends AppCompatActivity {
+public class EditTaskActivity extends AppCompatActivity {
     private int selectedYear = 0;
     private int selectedMonth = 0;
     private int selectedDay = 0;
-    private TextView selectedDateTextView;
+    private TextView selectedDateTextView, txt_date;
     private Calendar selectedDateCalendar;
+
     private Task updatedTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_edit_task);
+        setContentView(R.layout.activity_edit_task);
 
         Intent intent = getIntent();
-        int taskId = intent.getIntExtra("taskId", -1);
-        String taskTitle = intent.getStringExtra("taskTitle");
-        String taskDescription = intent.getStringExtra("taskDescription");
-        int date = intent.getIntExtra("taskDate", 1);
-        int month = intent.getIntExtra("taskMonth", 1);
+        int taskId = intent.getIntExtra("id", -1);
+        listClass object = listClass.getInstance();//get task list
+        Task ourTask = object.getTaskById(taskId);
+        String taskTitle = ourTask.getTitle();
+        String taskDescription = ourTask.getDescription();
+        int date = ourTask.getDate();
+        int month = ourTask.getMonth();
+        int year = ourTask.getYear();
 
         // Populate the UI elements with task details
         EditText editTaskTitle = findViewById(R.id.editTask_Title);
         EditText editTaskDescription = findViewById(R.id.editTask_Description);
+        //EditText txt_date = findViewById(R.id.selectedDateTextView);
         selectedDateTextView = findViewById(R.id.selectedDateTextView);
 
         // Populate other UI elements for date and time
         editTaskTitle.setText(taskTitle);
         editTaskDescription.setText(taskDescription);
+        selectedDateTextView.setText(year+"-"+month+"-"+date);
 
         // Handle user edits and save changes
         Button saveButton = findViewById(R.id.btn_done);
@@ -51,17 +57,18 @@ public class EditTaskFragment extends AppCompatActivity {
                 // Retrieve edited task details from UI elements
                 String editedTitle = editTaskTitle.getText().toString();
                 String editedDescription = editTaskDescription.getText().toString();
-
+                object.setTaskById(taskId,editedTitle,editedDescription,10,10,10);//NEED TO SET REAL DATE
                 // Create an updated task
-                updatedTask = new Task(taskId, editedTitle, editedDescription, selectedYear, selectedMonth, selectedDay);
+                //updatedTask = new Task(taskId, editedTitle, editedDescription, selectedYear, selectedMonth, selectedDay);
 
                 // 3. Set the result to indicate a successful update
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("updatedTask", updatedTask);
                 setResult(RESULT_OK, resultIntent);
 
-                // 4. Finish the EditTaskFragment to return to the previous screen
-                finish();
+                // 4. Go back to Homepage
+                Intent intent1=new Intent(EditTaskActivity.this,HomeActivity.class);
+                startActivity(intent1);
             }
         });
 

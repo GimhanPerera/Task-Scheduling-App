@@ -78,4 +78,5 @@ public class HomeActivity extends AppCompatActivity {
     public void openHomePage(){
         getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
     }
+
 }
