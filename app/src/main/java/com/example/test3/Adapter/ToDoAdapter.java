@@ -22,22 +22,24 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
     String[] month= {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
 
     public ToDoAdapter(List<Task> taskList, Context context) {
-        this.taskList = taskList;
-        this.context = context;
+        this.taskList = taskList;//Our Task List
+        this.context = context; //Where this need to show
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_task_layout, parent, false);//In here, We create a card.
+
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Task task = taskList.get(position);
-        holder.titleTextView.setText(task.getTitle()); // Access titleTextView from MyViewHolder
-        holder.dateTextView.setText(month[(task.getMonth())-1] + "/" + task.getDate()); // Access dateTextView from MyViewHolder
+        //holder.titleTextView.setText(task.getTitle()); // Access titleTextView from MyViewHolder - Bimidu
+        holder.toDoCheckbox.setText(task.getTitle()); // Access titleTextView from MyViewHolder - Gimhan
+        holder.dateTextView.setText(month[(task.getMonth())] + "/" + task.getDate()); // Access dateTextView from MyViewHolder
     }
 
     @Override

@@ -34,7 +34,7 @@ public class HomeFragment extends Fragment {
 
         v = inflater.inflate(R.layout.fragment_home,container,false);
         //------------------------------
-        listClass object = listClass.getInstance();
+        listClass object = listClass.getInstance();//get task list
         //fillTaskList();
         //final String TAG = "Task APP";
         //Log.d(TAG,"onCreate: "+taskList.toString());//FOR TESTING

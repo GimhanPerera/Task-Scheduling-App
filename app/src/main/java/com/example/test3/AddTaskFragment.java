@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -33,28 +34,45 @@ public class AddTaskFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_task, container, false);
         selectedDateTextView = view.findViewById(R.id.selectedDateTextView);
+
+        //inisiate the elements
+        listClass object = listClass.getInstance();
+        EditText title = view.findViewById(R.id.addTask_Title);
+        EditText description = view.findViewById(R.id.addTask_Description);
+
+        //set elements - NOT WORK
+        title.setText("");
+        description.setText("");
+
         // Initialize the selectedDateCalendar
         selectedDateCalendar = Calendar.getInstance();
         Button btn_add = view.findViewById(R.id.btn_add);
 
         Button selectDateButton = view.findViewById(R.id.selectDateButton);
-
+        ImageButton btn_back = view.findViewById(R.id.Back);
 
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Add new task
-                listClass object = listClass.getInstance();
-                EditText title = view.findViewById(R.id.addTask_Title);
-                EditText description = view.findViewById(R.id.addTask_Description);
-
-
-
 
                 Task newTask = new Task(object.getNextId(), title.getText().toString(), description.getText().toString(), selectedYear, selectedMonth, selectedDay);
                 object.setNewTask(newTask);
+
+                ((HomeActivity) getActivity()).openHomePage();//Open home again.
+                //getActivity() -  within a Fragment, it returns the parent Activity(HomeActivity in here) associated with that Fragment.
+                //We call openHomePage(); Method of Parent Activity
             }
         });
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((HomeActivity) getActivity()).openHomePage();//Open home again.
+                //getActivity() -  within a Fragment, it returns the parent Activity(HomeActivity in here) associated with that Fragment.
+                //We call openHomePage(); Method of Parent Activity
+            }
+        });
+
         selectDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
