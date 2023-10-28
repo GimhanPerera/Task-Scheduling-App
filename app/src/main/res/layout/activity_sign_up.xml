@@ -116,7 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
-                android:splitMotionEvents=""
+                android:splitMotionEvents="true"
                 app:boxBackgroundMode="outline"
                 app:passwordToggleEnabled="true">
 
@@ -126,7 +126,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:enabled="false"
-
                     android:hint="Confirm Password"
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
