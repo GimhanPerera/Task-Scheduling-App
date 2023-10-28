@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.test3.Model.Task;
@@ -78,6 +79,15 @@ public class EditTaskActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Show the DatePickerDialog only when the "Select Date" button is clicked
                 showDatePickerDialog();
+            }
+        });
+
+        ImageButton btn_back = findViewById(R.id.Back);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(EditTaskActivity.this,HomeActivity.class);
+                startActivity(intent);
             }
         });
     }

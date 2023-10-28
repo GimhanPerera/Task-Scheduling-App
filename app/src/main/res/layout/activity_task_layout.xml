@@ -20,7 +20,16 @@
             android:layout_height="wrap_content"
             android:buttonTint="@android:color/holo_blue_dark"
             android:paddingStart="8dp"
-            android:text="This is sample 1" />
+            android:text="" />
+        <TextView
+            android:id="@+id/todoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:paddingStart="35dp"
+            android:text="This is sample 1"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"/>
 
         <TextView
             android:id="@+id/dateTextView"

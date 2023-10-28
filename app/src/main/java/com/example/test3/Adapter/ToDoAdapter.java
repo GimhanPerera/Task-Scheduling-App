@@ -40,7 +40,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Task task = taskList.get(position);
         //holder.titleTextView.setText(task.getTitle()); // Access titleTextView from MyViewHolder - Bimidu
-        holder.toDoCheckbox.setText(task.getTitle()); // Access titleTextView from MyViewHolder - Gimhan
+        holder.todoTitle.setText(task.getTitle()); // Access titleTextView from MyViewHolder - Gimhan //CHANGED - When adding ceperate title
         holder.dateTextView.setText(month[(task.getMonth())] + "/" + task.getDate()); // Access dateTextView from MyViewHolder
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,14 +61,14 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        CheckBox toDoCheckbox;
+        TextView todoTitle;//CHANGED - When adding ceperate title
         TextView titleTextView; // Declare titleTextView
         TextView dateTextView; // Declare dateTextView
         CardView parentLayout;//For edit part - Storing a Task card
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            toDoCheckbox = itemView.findViewById(R.id.todoCheckbox);
+            todoTitle = itemView.findViewById(R.id.todoTitle);//CHANGED - When adding ceperate title
             titleTextView = itemView.findViewById(R.id.titleTextView); // Initialize titleTextView
             dateTextView = itemView.findViewById(R.id.dateTextView); // Initialize dateTextView
             parentLayout = itemView.findViewById(R.id.oneLineTaskLayout);
