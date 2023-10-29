@@ -21,6 +21,7 @@ public class EditTaskActivity extends AppCompatActivity {
     private int selectedDay = 0;
     private TextView selectedDateTextView, txt_date;
     private Calendar selectedDateCalendar;
+    int date,month,year;
 
     private Task updatedTask;
 
@@ -35,9 +36,13 @@ public class EditTaskActivity extends AppCompatActivity {
         Task ourTask = object.getTaskById(taskId);
         String taskTitle = ourTask.getTitle();
         String taskDescription = ourTask.getDescription();
-        int date = ourTask.getDate();
-        int month = ourTask.getMonth();
-        int year = ourTask.getYear();
+        date = ourTask.getDate();
+        month = ourTask.getMonth();
+        year = ourTask.getYear();
+        selectedDateCalendar = Calendar.getInstance();
+        selectedDateCalendar.set(Calendar.YEAR, date);
+        selectedDateCalendar.set(Calendar.MONTH, month); // Note: Month is zero-based, so January is 0, February is 1, etc.
+        selectedDateCalendar.set(Calendar.DAY_OF_MONTH, year);
 
         // Populate the UI elements with task details
         EditText editTaskTitle = findViewById(R.id.editTask_Title);
@@ -96,6 +101,7 @@ public class EditTaskActivity extends AppCompatActivity {
         // Initialize the DatePickerDialog with the current date
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 this,
+                R.style.DatePickerDialogStyle,
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -113,9 +119,9 @@ public class EditTaskActivity extends AppCompatActivity {
                         selectedDateTextView.setText(formattedDate);
                     }
                 },
-                selectedDateCalendar.get(Calendar.YEAR),
-                selectedDateCalendar.get(Calendar.MONTH),
-                selectedDateCalendar.get(Calendar.DAY_OF_MONTH)
+                year,
+                month,
+                date
         );
 
         datePickerDialog.show();
