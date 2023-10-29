@@ -18,7 +18,7 @@
             android:id="@+id/todoCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@android:color/holo_blue_dark"
+            android:theme="@style/colored_checkbox"
             android:paddingStart="8dp"
             android:text="" />
         <TextView

@@ -90,6 +90,7 @@ public class AddTaskFragment extends Fragment {
     private void showDatePickerDialog(TextView selectedDateTextView, Calendar selectedDateCalendar) {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 requireContext(),
+                R.style.DatePickerDialogStyle,
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
