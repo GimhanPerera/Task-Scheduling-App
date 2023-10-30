@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,6 +17,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
@@ -48,7 +50,7 @@ public class HomeFragment extends Fragment {
         mAdapter = new ToDoAdapter(object.getTaskList(), requireContext());//May be occur a problem
         taskRecyclerView.setAdapter(mAdapter);
 
-
+        reArrange();//Arrange the order
 
         //taskRecyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
         //------------------------------------
@@ -67,17 +69,22 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
-
-
-
         return v;
     }
+
 
     private void fillTaskList() {
         Task t0 = new Task(1,"Do homework","Nothing",2023,10,28);
         Task t1 = new Task(2,"Do Assignment","Nothing",2023,10,26);
         Task t2 = new Task(3,"Say hay","Nothing",2023,10,26);
         taskList.addAll(Arrays.asList(new Task[]{t0,t1,t2}));
+    }
+
+    public void reArrange(){
+        Toast.makeText(requireContext(),"reArrange in HmFr", Toast.LENGTH_SHORT).show();
+        listClass object=listClass.getInstance();
+        object.reArrangeBydate();
+        mAdapter.notifyDataSetChanged();
+        //mAdapter = new ToDoAdapter(object.getTaskList(), requireContext());//May be occur a problem
     }
 }

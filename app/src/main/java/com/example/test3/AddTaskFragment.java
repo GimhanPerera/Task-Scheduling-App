@@ -11,6 +11,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -58,6 +59,7 @@ public class AddTaskFragment extends Fragment {
 
                 Task newTask = new Task(object.getNextId(), title.getText().toString(), description.getText().toString(), selectedYear, selectedMonth, selectedDay);
                 object.setNewTask(newTask);
+                Toast.makeText(requireContext(),"Added "+selectedMonth+" "+selectedDay, Toast.LENGTH_SHORT).show();
 
                 ((HomeActivity) getActivity()).openHomePage();//Open home again.
                 //getActivity() -  within a Fragment, it returns the parent Activity(HomeActivity in here) associated with that Fragment.

@@ -2,6 +2,8 @@ package com.example.test3.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Comparator;
+
 public class Task implements Parcelable {
 
     private int id;
@@ -106,6 +108,29 @@ public class Task implements Parcelable {
     public void setDate(int date) {
         this.date = date;
     }
+
+    public static Comparator<Task> TaskDateAscendingComparator = new Comparator<Task>() {
+        @Override
+        public int compare(Task tk1, Task tk2) {
+            if((tk1.getYear()-tk2.getYear()) == 0){
+                if(tk1.getMonth()-tk2.getMonth() == 0){
+                    if(tk1.getDate()-tk2.getDate() == 0){
+                        return 1;
+                    }
+                    else {
+                        return tk1.getDate()-tk2.getDate();
+                    }
+                }
+                else{
+                    return tk1.getMonth()-tk2.getMonth();
+                }
+            }
+            else{
+                return tk1.getYear()-tk2.getYear();
+            }
+        }
+    };
+
 
     @Override
     public String toString() {
