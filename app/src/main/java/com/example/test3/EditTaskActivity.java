@@ -63,7 +63,7 @@ public class EditTaskActivity extends AppCompatActivity {
                 // Retrieve edited task details from UI elements
                 String editedTitle = editTaskTitle.getText().toString();
                 String editedDescription = editTaskDescription.getText().toString();
-                object.setTaskById(taskId,editedTitle,editedDescription,year,month,date);//NEED TO SET REAL DATE
+                object.setTaskById(taskId,editedTitle,editedDescription,selectedYear,selectedMonth,selectedDay);//NEED TO SET REAL DATE
                 // Create an updated task
                 //updatedTask = new Task(taskId, editedTitle, editedDescription, selectedYear, selectedMonth, selectedDay);
 
