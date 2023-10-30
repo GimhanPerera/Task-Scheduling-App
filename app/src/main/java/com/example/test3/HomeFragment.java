@@ -4,16 +4,20 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.test3.Adapter.ToDoAdapter;
 import com.example.test3.Model.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,10 +29,12 @@ public class HomeFragment extends Fragment {
 
     private TextView a;
     private FloatingActionButton btn_action;
+
     View v;
     List<Task> taskList=new ArrayList<Task>();
     private RecyclerView taskRecyclerView;
     private RecyclerView.Adapter mAdapter;
+    private RelativeLayout relLayout;
     private RecyclerView.LayoutManager layoutManager;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,6 +42,7 @@ public class HomeFragment extends Fragment {
 
         v = inflater.inflate(R.layout.fragment_home,container,false);
         //------------------------------
+        this.relLayout= v.findViewById(R.id.relayout);
         listClass object = listClass.getInstance();//get task list
         //fillTaskList();
         //final String TAG = "Task APP";
@@ -69,6 +76,9 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        ItemTouchHelper helper = new ItemTouchHelper(callback);
+        helper.attachToRecyclerView(taskRecyclerView);
+
         return v;
     }
 
@@ -87,4 +97,37 @@ public class HomeFragment extends Fragment {
         mAdapter.notifyDataSetChanged();
         //mAdapter = new ToDoAdapter(object.getTaskList(), requireContext());//May be occur a problem
     }
+
+    //For delete items
+    ItemTouchHelper.SimpleCallback callback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            listClass object=listClass.getInstance();
+            Task temp = object.getTaskList().get(viewHolder.getLayoutPosition());
+            object.getTaskList().remove(viewHolder.getLayoutPosition()); //Remove the item
+            reArrange();//Rearrange
+            Snackbar snackbar = Snackbar.make(relLayout, "Item deleted", Snackbar.LENGTH_SHORT)
+                    .setAction("UNDO", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //Task temp = new Task();
+                            int nexid = object.getNextId();
+                            object.setNewTask(temp);
+                            reArrange();
+                            Toast.makeText(requireContext(),"DONE: "+temp.getTitle(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+            snackbar.show();
+
+
+            //taskList.remove(viewHolder.getLayoutPosition());//0,1,2
+
+            //mAdapter.notifyDataSetChanged();
+        }
+    };
 }

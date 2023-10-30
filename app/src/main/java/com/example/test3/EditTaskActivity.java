@@ -40,9 +40,9 @@ public class EditTaskActivity extends AppCompatActivity {
         month = ourTask.getMonth();
         year = ourTask.getYear();
         selectedDateCalendar = Calendar.getInstance();
-        selectedDateCalendar.set(Calendar.YEAR, date);
+        selectedDateCalendar.set(Calendar.YEAR, year);
         selectedDateCalendar.set(Calendar.MONTH, month); // Note: Month is zero-based, so January is 0, February is 1, etc.
-        selectedDateCalendar.set(Calendar.DAY_OF_MONTH, year);
+        selectedDateCalendar.set(Calendar.DAY_OF_MONTH, date);
 
         // Populate the UI elements with task details
         EditText editTaskTitle = findViewById(R.id.editTask_Title);
@@ -63,7 +63,7 @@ public class EditTaskActivity extends AppCompatActivity {
                 // Retrieve edited task details from UI elements
                 String editedTitle = editTaskTitle.getText().toString();
                 String editedDescription = editTaskDescription.getText().toString();
-                object.setTaskById(taskId,editedTitle,editedDescription,10,10,10);//NEED TO SET REAL DATE
+                object.setTaskById(taskId,editedTitle,editedDescription,selectedYear,selectedMonth,selectedDay);//NEED TO SET REAL DATE
                 // Create an updated task
                 //updatedTask = new Task(taskId, editedTitle, editedDescription, selectedYear, selectedMonth, selectedDay);
 
