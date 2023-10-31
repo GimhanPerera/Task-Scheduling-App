@@ -19,8 +19,10 @@ import com.example.test3.Model.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
@@ -35,6 +37,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView taskRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RelativeLayout relLayout;
+    private TextView homePageDate;
     private RecyclerView.LayoutManager layoutManager;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,6 +59,82 @@ public class HomeFragment extends Fragment {
         taskRecyclerView.setLayoutManager(layoutManager);
         mAdapter = new ToDoAdapter(object.getTaskList(), requireContext());//May be occur a problem
         taskRecyclerView.setAdapter(mAdapter);
+
+        //Displaying the current date in the home page
+        //Bimindu
+        homePageDate = v.findViewById(R.id.txt_homePageDate);
+        Calendar calendar = Calendar.getInstance();
+        int month = calendar.get(Calendar.MONTH);
+
+        // Mapping the retrieved value to the corresponding month
+        String monthName = "";
+        switch (month) {
+            case Calendar.JANUARY:
+                monthName = "January";
+                break;
+            case Calendar.FEBRUARY:
+                monthName = "February";
+                break;
+            case Calendar.MARCH:
+                monthName = "March";
+                break;
+            case Calendar.APRIL:
+                monthName = "April";
+                break;
+            case Calendar.MAY:
+                monthName = "May";
+                break;
+            case Calendar.JUNE:
+                monthName = "June";
+                break;
+            case Calendar.JULY:
+                monthName = "July";
+                break;
+            case Calendar.AUGUST:
+                monthName = "August";
+                break;
+            case Calendar.SEPTEMBER:
+                monthName = "September";
+                break;
+            case Calendar.OCTOBER:
+                monthName = "October";
+                break;
+            case Calendar.NOVEMBER:
+                monthName = "November";
+                break;
+            case Calendar.DECEMBER:
+                monthName = "December";
+                break;
+        }
+        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+        // Mapping the retrieved value to the corresponding day of the week
+        String dayName = "";
+        switch (dayOfWeek) {
+            case Calendar.SUNDAY:
+                dayName = "SUN";
+                break;
+            case Calendar.MONDAY:
+                dayName = "MON";
+                break;
+            case Calendar.TUESDAY:
+                dayName = "TUE";
+                break;
+            case Calendar.WEDNESDAY:
+                dayName = "WED";
+                break;
+            case Calendar.THURSDAY:
+                dayName = "THU";
+                break;
+            case Calendar.FRIDAY:
+                dayName = "FRI";
+                break;
+            case Calendar.SATURDAY:
+                dayName = "SAT";
+                break;
+        }
+        int toDay = calendar.get(Calendar.DAY_OF_MONTH);//Getting current datte
+        String display_date = dayName+", "+toDay+" "+monthName ;//Display string
+        homePageDate.setText(display_date);
 
         reArrange();//Arrange the order
 
