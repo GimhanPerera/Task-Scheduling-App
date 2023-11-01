@@ -19,9 +19,9 @@ public class userClass {
 
     private void addUserList() {
         User u0 = new User(1,"Naduni","Rabel", "nad@gmail.com", "Abc123@123");
-        User u1 = new User(1,"Samadhi","Thara", "thara@gmail.com", "Def123@123");
-        User u2 = new User(1,"Bimindu","Dhashmika", "bim@gmail.com", "Ghi123@123");
-        User u3 = new User(1,"Gimhan","Perera", "gim@gmail.com", "Jkl123@123");
+        User u1 = new User(2,"Samadhi","Thara", "thara@gmail.com", "Def123@123");
+        User u2 = new User(3,"Bimindu","Dhashmika", "bim@gmail.com", "Ghi123@123");
+        User u3 = new User(4,"Gimhan","Perera", "gim@gmail.com", "Jkl123@123");
 
         userDetails.addAll(Arrays.asList(new User[]{u0,u1,u2,u3}));
     }
