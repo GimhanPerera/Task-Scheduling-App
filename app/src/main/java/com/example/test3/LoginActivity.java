@@ -1,9 +1,16 @@
 package com.example.test3;
 
+//import static com.example.test3.userClass.userDetails;
+
+
+import static android.app.PendingIntent.getActivity;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.View;
@@ -11,6 +18,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.test3.Model.User;
+
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
@@ -66,9 +76,33 @@ public class LoginActivity extends AppCompatActivity {
     public void btnLogin(){
 
         //DO THE LOGIN VALIDATION HERE
+            String input_email = txt_email.getText().toString().trim();
+            String input_password = txt_password.getText().toString().trim();
+            User matchedUser = null;
+            userClass userClassObj = new userClass();
+            List<User> list = userClassObj.getList();
 
-            Intent intent=new Intent(this,HomeActivity.class);
-            startActivity(intent);
+            for (User user : list) {
+                if (user.getEmail().equals(input_email)) {
+                    matchedUser = user;
+                    Log.d("myTag", String.valueOf(matchedUser));
+                    break;
+                }
+            }
+
+            if (matchedUser != null) {
+                String userPwd = matchedUser.getPassword();
+                if(userPwd.equals(input_password)){
+
+                    Intent intent=new Intent(this,HomeActivity.class);
+                    startActivity(intent);
+
+                }
+            } else{
+
+
+
+            }
     }
     public void goToSignUpPage(){
         Intent intent=new Intent(this,SignUpActivity.class);
