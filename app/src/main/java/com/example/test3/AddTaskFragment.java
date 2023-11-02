@@ -40,10 +40,9 @@ public class AddTaskFragment extends Fragment {
         listClass object = listClass.getInstance();
         EditText title = view.findViewById(R.id.addTask_Title);
         EditText description = view.findViewById(R.id.addTask_Description);
-
         //set elements - NOT WORK
         title.setText("");
-        description.setText("");
+        description.setText(object.getTaskList().get(1).toString()+"\n"+object.getTaskList().get(1).getCompletion());
 
         // Initialize the selectedDateCalendar
         selectedDateCalendar = Calendar.getInstance();

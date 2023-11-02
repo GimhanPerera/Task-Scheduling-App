@@ -1,5 +1,6 @@
 package com.example.test3;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -173,6 +174,7 @@ public class HomeFragment extends Fragment {
         Toast.makeText(requireContext(),"reArrange in HmFr", Toast.LENGTH_SHORT).show();
         listClass object=listClass.getInstance();
         object.reArrangeBydate();
+        //object.reArrangeByChecked();
         mAdapter.notifyDataSetChanged();
         //mAdapter = new ToDoAdapter(object.getTaskList(), requireContext());//May be occur a problem
     }
@@ -195,7 +197,7 @@ public class HomeFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             //Task temp = new Task();
-                            int nexid = object.getNextId();
+                            //int nexid = object.getNextId();
                             object.setNewTask(temp);
                             reArrange();
                             Toast.makeText(requireContext(),"DONE: "+temp.getTitle(), Toast.LENGTH_SHORT).show();

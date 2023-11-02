@@ -23,7 +23,7 @@
             android:text="" />
         <TextView
             android:id="@+id/todoTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="265dp"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:paddingStart="35dp"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="280dp"
+            android:layout_marginStart="275dp"
             android:layout_marginEnd="3dp"
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
