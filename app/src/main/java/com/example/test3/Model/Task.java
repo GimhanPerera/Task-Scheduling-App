@@ -109,6 +109,13 @@ public class Task implements Parcelable {
         this.date = date;
     }
 
+    public void setCompletion(boolean t){
+        complete = t;
+    }
+    public boolean getCompletion(){
+        return complete;
+    }
+
     public static Comparator<Task> TaskDateAscendingComparator = new Comparator<Task>() {
         @Override
         public int compare(Task tk1, Task tk2) {
@@ -140,9 +147,4 @@ public class Task implements Parcelable {
                 ", description='" + description + '\'' +
                 '}';
     }
-
-
-
-
-
 }

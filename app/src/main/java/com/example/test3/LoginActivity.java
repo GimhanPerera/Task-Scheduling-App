@@ -1,6 +1,6 @@
 package com.example.test3;
 
-
+//import static com.example.test3.userClass.userDetails;
 
 
 import static android.app.PendingIntent.getActivity;
@@ -184,6 +184,3 @@ public class LoginActivity extends AppCompatActivity {
 
 
 }
-
-
-
