@@ -13,7 +13,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView; // Import TextView
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -126,6 +125,9 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             todoCheckbox = itemView.findViewById(R.id.todoCheckbox);
+
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
             todoTitle = itemView.findViewById(R.id.todoTitle);//CHANGED - When adding ceperate title
             titleTextView = itemView.findViewById(R.id.titleTextView); // Initialize titleTextView
             dateTextView = itemView.findViewById(R.id.dateTextView); // Initialize dateTextView

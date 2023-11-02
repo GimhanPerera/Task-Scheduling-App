@@ -147,9 +147,4 @@ public class Task implements Parcelable {
                 ", description='" + description + '\'' +
                 '}';
     }
-
-
-
-
-
 }
