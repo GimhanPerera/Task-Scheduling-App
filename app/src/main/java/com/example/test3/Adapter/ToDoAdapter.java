@@ -21,6 +21,8 @@ import com.example.test3.HomeActivity;
 import com.example.test3.HomeFragment;
 import com.example.test3.Model.Task;
 import com.example.test3.R;
+import com.example.test3.listClass;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
 import java.util.List;
@@ -103,9 +105,34 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
                     if(isChecked){
                         task.setCompletion(true);
                         holder.todoTitle.setPaintFlags(holder.todoTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                        /*--------------------------------------
+                        try{
+                            listClass object=listClass.getInstance();
+                            Task temp = object.getTaskList().get(position);
+                            object.getTaskList().remove(position); //Remove the item
+                            reArrange();//Rearrange
+                            Snackbar snackbar = Snackbar.make(relLayout, "Item deleted", Snackbar.LENGTH_SHORT)
+                                    .setAction("UNDO", new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            //Task temp = new Task();
+                                            //int nexid = object.getNextId();
+                                            object.setNewTask(temp);
+                                            reArrange();
+                                            Toast.makeText(requireContext(),"DONE: "+temp.getTitle(), Toast.LENGTH_SHORT).show();//For Testing
+                                        }
+                                    });
+                            snackbar.show();
+                        }catch (Exception ex){
+                            Toast.makeText(requireContext(),"Exception!!", Toast.LENGTH_SHORT).show();
+                        }
+                        //--------------------------------------*/
                     }
-                    else
+                    else{
+                        task.setCompletion(true);
                         holder.todoTitle.setPaintFlags(holder.todoTitle.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+                    }
+
             }
         });
     }
@@ -125,9 +152,6 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             todoCheckbox = itemView.findViewById(R.id.todoCheckbox);
-
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
             todoTitle = itemView.findViewById(R.id.todoTitle);//CHANGED - When adding ceperate title
             titleTextView = itemView.findViewById(R.id.titleTextView); // Initialize titleTextView
             dateTextView = itemView.findViewById(R.id.dateTextView); // Initialize dateTextView
