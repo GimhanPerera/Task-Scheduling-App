@@ -129,7 +129,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
                         //--------------------------------------*/
                     }
                     else{
-                        task.setCompletion(true);
+                        task.setCompletion(false);
                         holder.todoTitle.setPaintFlags(holder.todoTitle.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
                     }
 
