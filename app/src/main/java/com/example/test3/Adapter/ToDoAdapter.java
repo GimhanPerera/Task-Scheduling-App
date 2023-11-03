@@ -148,17 +148,4 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
             parentLayout = itemView.findViewById(R.id.oneLineTaskLayout);
         }
     }
-    Thread thread = new Thread(new Runnable() {
-        @Override
-        public void run() {
-            try {
-                // Sleep for 2000 milliseconds (2 seconds)
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            // Code to be executed after the delay
-        }
-    });
 }
