@@ -59,8 +59,9 @@ public class AddTaskFragment extends Fragment {
 
                 Task newTask = new Task(object.getNextId(), title.getText().toString(), description.getText().toString(), selectedYear, selectedMonth, selectedDay);
                 object.setNewTask(newTask);
-                Toast.makeText(requireContext(),"Added "+selectedMonth+" "+selectedDay, Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(requireContext(),"Ad "+newTask.getId()+" "+newTask.getTitle(), Toast.LENGTH_LONG).show();//For testing
+                title.setText("");
+                description.setText("");
                 ((HomeActivity) getActivity()).openHomePage();//Open home again.
                 //getActivity() -  within a Fragment, it returns the parent Activity(HomeActivity in here) associated with that Fragment.
                 //We call openHomePage(); Method of Parent Activity
@@ -69,6 +70,8 @@ public class AddTaskFragment extends Fragment {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                title.setText("");
+                description.setText("");
                 ((HomeActivity) getActivity()).openHomePage();//Open home again.
                 //getActivity() -  within a Fragment, it returns the parent Activity(HomeActivity in here) associated with that Fragment.
                 //We call openHomePage(); Method of Parent Activity

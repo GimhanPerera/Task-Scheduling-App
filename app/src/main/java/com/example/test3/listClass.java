@@ -79,12 +79,15 @@ public class listClass{
                 tempList.add(task);
             }
         }
-        for (Task task : taskList) {
-            if(task.getCompletion()){
-                tempList.remove(task);
+        if(!tempList.isEmpty()){
+            for (Task task : tempList) {
+                int index = taskList.indexOf(task);
+                taskList.remove(index);
             }
+            taskList.addAll(tempList);
         }
-        taskList.addAll(tempList);
+
+
     }
 }
 
