@@ -102,31 +102,21 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     task.setCompletion(isChecked);
+
+                //--------------------------------------
                     if(isChecked){
                         task.setCompletion(true);
                         holder.todoTitle.setPaintFlags(holder.todoTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                        /*--------------------------------------
-                        try{
+                        /*try{
                             listClass object=listClass.getInstance();
-                            Task temp = object.getTaskList().get(position);
-                            object.getTaskList().remove(position); //Remove the item
-                            reArrange();//Rearrange
-                            Snackbar snackbar = Snackbar.make(relLayout, "Item deleted", Snackbar.LENGTH_SHORT)
-                                    .setAction("UNDO", new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            //Task temp = new Task();
-                                            //int nexid = object.getNextId();
-                                            object.setNewTask(temp);
-                                            reArrange();
-                                            Toast.makeText(requireContext(),"DONE: "+temp.getTitle(), Toast.LENGTH_SHORT).show();//For Testing
-                                        }
-                                    });
-                            snackbar.show();
+                            int index= object.getTaskList().indexOf(task);
+                            Task temp = object.getTaskList().get(index);
+                            object.getTaskList().remove(index); //Remove the item
+                            //HomeFragment homeFragment = new HomeFragment();
+                            //homeFragment.reArrange();//Rearrange
                         }catch (Exception ex){
-                            Toast.makeText(requireContext(),"Exception!!", Toast.LENGTH_SHORT).show();
-                        }
-                        //--------------------------------------*/
+                            //Toast.makeText(requireContext(),"Exception!!", Toast.LENGTH_SHORT).show();
+                        }*/
                     }
                     else{
                         task.setCompletion(false);
