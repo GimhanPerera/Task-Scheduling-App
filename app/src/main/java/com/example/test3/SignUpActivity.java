@@ -22,10 +22,11 @@ import java.util.regex.Pattern;
 public class SignUpActivity extends AppCompatActivity {
     private Button btn_signUp;
     private TextView txt_backToSignIn;
-
-    private TextInputLayout layoutEmail;
-    private TextInputLayout layoutFirstName;
-    private TextInputLayout layoutlastName;
+    private TextInputLayout layout_firstName;
+    private TextInputLayout layout_lastName;
+    private TextInputLayout layout_email;
+    private TextInputLayout layout_password;
+    private TextInputLayout layout_confirmPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,78 +53,55 @@ public class SignUpActivity extends AppCompatActivity {
 
         //DO SIGN UP VALIDATION HERE
 
-        TextInputLayout firstNameLayout = findViewById(R.id.layout_firstName);
-        TextInputLayout lastNameLayout = findViewById(R.id.layout_lastName);
-        TextInputLayout emailLayout = findViewById(R.id.layout_email);
-        TextInputLayout passwordLayout = findViewById(R.id.layout_password);
-        TextInputLayout confirmPasswordLayout = findViewById(R.id.layout_confirmPassword);
+        //password validations
+        TextInputLayout layoutPassword = findViewById(R.id.layout_password);
+        TextInputEditText TextPassword = findViewById(R.id.password);
 
-        TextInputEditText lastNaneEditText = (TextInputEditText) lastNameLayout.getEditText();
-        TextInputEditText firstNameEditText = (TextInputEditText) firstNameLayout.getEditText();
-        TextInputEditText emailEditText = (TextInputEditText) emailLayout.getEditText();
-        TextInputEditText passwordEditText = (TextInputEditText) passwordLayout.getEditText();
-        TextInputEditText confirmPasswordEditText = (TextInputEditText) confirmPasswordLayout.getEditText();
+        TextPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-        String firstName = firstNameEditText.getText().toString();
-        String lastName = lastNaneEditText.getText().toString();
-        String email = emailEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
-        String confirmPassword = confirmPasswordEditText.getText().toString();
+            }
 
-        // Validate name
-        if (firstName.isEmpty()) {
-            firstNameLayout.setError("First Name is required");
-            return;
-        } else {
-            firstNameLayout.setError(null);
-        }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String Password = s.toString();
 
-        // Validate last name
-        if (lastName.isEmpty()) {
-            lastNameLayout.setError("Last Name is required");
-            return;
-        } else {
-            lastNameLayout.setError(null);
-        }
+                if (Password.length() >= 8) {
+                    Pattern pattern = Pattern.compile("[^a-zA-Z0-9]");
+                    Matcher matcher = pattern.matcher(Password);
+                    boolean isPwdContainSpeChar = matcher.find();
+                    if (isPwdContainSpeChar) {
+                        layoutPassword.setHelperText("Strong password");
+                        layoutPassword.setError("");
 
-        // Validate email
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-        Pattern pattern = Pattern.compile(emailPattern);
-        Matcher matcher = pattern.matcher(email);
-        if (!matcher.matches()) {
-            emailLayout.setError("Invalid email address");
-            return;
-        } else {
-            emailLayout.setError(null);
-        }
+                    } else {
+                        layoutPassword.setHelperText("");
+                        layoutPassword.setError("Password should contain at 1 special character");
+                    }
 
-        // Validate password
-        if (password.isEmpty()) {
-            passwordLayout.setError("Password is required");
-            return;
-        } else if (password.length() < 8) {
-            passwordLayout.setError("Password must be at least 8 characters");
-            return;
-        } else {
-            passwordLayout.setError(null);
-        }
 
-        // Validate confirm password
-        if (!confirmPassword.equals(password)) {
-            confirmPasswordLayout.setError("Passwords do not match");
-            return;
-        } else {
-            confirmPasswordLayout.setError(null);
-        }
+                } else {
+                    layoutPassword.setHelperText("");
+                    layoutPassword.setError("Enter minimum 8 characters");
+                }
+            }
 
-    Intent intent = new Intent(this, HomeActivity.class);
+            @Override
+            public void afterTextChanged(Editable s) {
 
-    startActivity(intent);
+            }
+        });
 
-}
-    public void goToSignInPage(){
 
-        Intent intent=new Intent(this,LoginActivity.class);
+
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
+
+    public void goToSignInPage() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
 }
