@@ -181,6 +181,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
+        <ImageView
+            android:id="@+id/newpwdcon"
+            android:layout_width="35dp"
+            android:layout_height="34dp"
+
+            android:layout_marginStart="24dp"
+            android:src="@drawable/baseline_password_24" />
+
+
+
+        <TextView
+            android:id="@+id/newpwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Change Password"
+            android:textSize="25dp" />
 
     </LinearLayout>
 

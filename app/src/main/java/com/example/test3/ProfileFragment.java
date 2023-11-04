@@ -29,6 +29,8 @@ public class ProfileFragment extends Fragment {
 
     private TextView firstNameTextView;
     private TextView logout;
+
+    private TextView newpd;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -75,7 +77,7 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         firstNameTextView = view.findViewById(R.id.name);
         logout = view.findViewById(R.id.logOutText);
-
+        newpd = view.findViewById(R.id.newpwd);
         int loggedInUserId = userClass.getLoggedInUserId();
         if (loggedInUserId != -1) {
             User user = getUserById(loggedInUserId);
@@ -89,6 +91,12 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 goToLoginPage();
             }
+        });
+
+        newpd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToNewPasswordPage();}
         });
         return view;
     }
@@ -107,6 +115,11 @@ public class ProfileFragment extends Fragment {
 
     public void goToLoginPage(){
         Intent intent = new Intent(getActivity(), LoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToNewPasswordPage(){
+        Intent intent = new Intent(getActivity(), NewPasswordActivity.class);
         startActivity(intent);
     }
 }
