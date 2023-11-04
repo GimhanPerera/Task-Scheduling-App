@@ -62,5 +62,4 @@ public class userClass {
     public static void setLoggedInUserId(int userId) {
         loggedInUserId = userId;
     }
-
 }

@@ -9,6 +9,12 @@
     android:background="@drawable/login_background"
     android:id="@+id/pt">
 
+
+
+
+
+
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -146,3 +152,4 @@
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

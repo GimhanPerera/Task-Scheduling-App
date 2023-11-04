@@ -1,5 +1,6 @@
 package com.example.test3;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.example.test3.Model.User;
+
+import java.util.List;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,13 +27,20 @@ public class ProfileFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    private TextView firstNameTextView;
+    private TextView logout;
+
+    private TextView newpd;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
+
     public ProfileFragment() {
         // Required empty public constructor
+
     }
+
 
     /**
      * Use this factory method to create a new instance of
@@ -49,16 +63,63 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        firstNameTextView = view.findViewById(R.id.name);
+        logout = view.findViewById(R.id.logOutText);
+        newpd = view.findViewById(R.id.newpwd);
+        int loggedInUserId = userClass.getLoggedInUserId();
+        if (loggedInUserId != -1) {
+            User user = getUserById(loggedInUserId);
+            if (user != null) {
+                String firstName = user.getFirstName();
+                firstNameTextView.setText(firstName);
+            }
+        }
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToLoginPage();
+            }
+        });
+
+        newpd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToNewPasswordPage();}
+        });
+        return view;
+    }
+
+
+    private User getUserById(int userId) {
+
+        List<User> userDetails = userClass.getUserDetails();
+        for (User user : userDetails) {
+            if (user.getId() == userId) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public void goToLoginPage(){
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToNewPasswordPage(){
+        Intent intent = new Intent(getActivity(), NewPasswordActivity.class);
+        startActivity(intent);
     }
 }

@@ -8,6 +8,7 @@ import static android.app.PendingIntent.getActivity;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,9 +20,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.example.test3.Model.User;
-
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -40,6 +39,8 @@ public class LoginActivity extends AppCompatActivity {
     private TextView txt_signUp;
     private EditText txt_email;
     private EditText txt_password;
+
+    User matchedUser = null;
 
     AlertDialog.Builder builder;
     @Override
@@ -67,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                 btnLogin();
             }
         });
-        txt_email.setOnKeyListener(new View.OnKeyListener() {
+       /** txt_email.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 validateEmail();
@@ -78,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 validatePassword();
                 return false;}
-        });
+        });**/
         txt_signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,8 +93,8 @@ public class LoginActivity extends AppCompatActivity {
 
             String input_email = txt_email.getText().toString().trim();
             String input_password = txt_password.getText().toString().trim();
-            User matchedUser = null;
             userClass userClassObj = new userClass();
+
             List<User> list = userClassObj.getList();
             if(!input_email.isEmpty() && !input_password.isEmpty()) {
                 if(validateEmail() & validatePassword()) {
@@ -106,12 +107,20 @@ public class LoginActivity extends AppCompatActivity {
                     if (matchedUser != null) {
                         String userPwd = matchedUser.getPassword();
                         if (userPwd.equals(input_password)) {
+
+
+                            int loggedInUserId = matchedUser.getId(); // Assuming getId() returns the user's ID
+
+                            // Store the logged-in user's ID in userClass (or any other data storage method)
+                            userClass.getInstance().setLoggedInUserId(loggedInUserId);
                             Intent intent = new Intent(this, HomeActivity.class);
                             startActivity(intent);
+
+
+
                         }
                         else {
-
-                         //password
+                            //password
                         showAlertDialog("Incorrect Password", "The password is incorrect.");
 
                          }
@@ -133,6 +142,8 @@ public class LoginActivity extends AppCompatActivity {
               //  cannot be empty
                 showAlertDialog("Empty Fields", "Email and password cannot be empty.");
             }
+
+
     }
 
     private void showAlertDialog(String title, String message) {
@@ -155,12 +166,12 @@ public class LoginActivity extends AppCompatActivity {
        String input_email = txt_email.getText().toString().trim();
 
        if(input_email.isEmpty()){
-           txt_email.setError("Field cannot be empty");
+          // txt_email.setError("Field cannot be empty");
            return false;
        } else if(!Patterns.EMAIL_ADDRESS.matcher(input_email).matches()){
            txt_email.setError("Invalid email address");
        } else{
-           txt_email.setError(null);
+          // txt_email.setError(null);
            return true;
        }
        return false;
@@ -169,16 +180,15 @@ public class LoginActivity extends AppCompatActivity {
         String input_password = txt_password.getText().toString().trim();
 
         if(input_password.isEmpty()){
-            txt_password.setError("Field cannot be empty");
+           // txt_password.setError("Field cannot be empty");
             return false;
         }else if(!PASSWORD_PATTERN.matcher(input_password).matches()){
             txt_password.setError("Invalid Password");
         } else{
-            txt_password.setError(null);
+          //  txt_password.setError(null);
             return true;
         }
         return false;
     }
-
-
 }
+
