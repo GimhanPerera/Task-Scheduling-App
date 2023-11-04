@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                 btnLogin();
             }
         });
-        txt_email.setOnKeyListener(new View.OnKeyListener() {
+       /** txt_email.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 validateEmail();
@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 validatePassword();
                 return false;}
-        });
+        });**/
         txt_signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -160,12 +160,12 @@ public class LoginActivity extends AppCompatActivity {
        String input_email = txt_email.getText().toString().trim();
 
        if(input_email.isEmpty()){
-           txt_email.setError("Field cannot be empty");
+          // txt_email.setError("Field cannot be empty");
            return false;
        } else if(!Patterns.EMAIL_ADDRESS.matcher(input_email).matches()){
            txt_email.setError("Invalid email address");
        } else{
-           txt_email.setError(null);
+          // txt_email.setError(null);
            return true;
        }
        return false;
@@ -174,12 +174,12 @@ public class LoginActivity extends AppCompatActivity {
         String input_password = txt_password.getText().toString().trim();
 
         if(input_password.isEmpty()){
-            txt_password.setError("Field cannot be empty");
+           // txt_password.setError("Field cannot be empty");
             return false;
         }else if(!PASSWORD_PATTERN.matcher(input_password).matches()){
             txt_password.setError("Invalid Password");
         } else{
-            txt_password.setError(null);
+          //  txt_password.setError(null);
             return true;
         }
         return false;
