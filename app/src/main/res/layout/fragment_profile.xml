@@ -40,7 +40,7 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="17dp"
         android:layout_marginEnd="78dp"
         android:layout_marginBottom="92dp"
         android:text="Gimhan"
@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
 
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="140dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         android:orientation="horizontal"
@@ -132,6 +132,8 @@
             android:textSize="25dp" />
     </LinearLayout>
 
+
+
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="409dp"
@@ -167,7 +169,7 @@
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="409dp"
-        android:layout_height="wrap_content"
+        android:layout_height="81dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
@@ -179,12 +181,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
         <ImageView
             android:id="@+id/logOutIcon"
             android:layout_width="37dp"
             android:layout_height="38dp"
 
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="44dp"
             android:src="@drawable/baseline_logout_24" />
 
         <TextView
@@ -195,8 +212,6 @@
             android:text="Log Out"
             android:textColor="@color/red"
             android:textSize="25dp" />
-
-
     </LinearLayout>
 
 

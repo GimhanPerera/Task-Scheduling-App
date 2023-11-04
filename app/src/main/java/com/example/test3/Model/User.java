@@ -1,11 +1,14 @@
 package com.example.test3.Model;
 
+import com.example.test3.LoginActivity;
+
 public class User {
     private int id;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
+
     public User(int id, String firstName, String lastName, String email, String password){
         this.id=id;
         this.firstName = firstName;
@@ -13,6 +16,11 @@ public class User {
         this.email = email;
         this.password = password;
     }
+
+    public int getId() {
+        return id;
+    }
+
     public String getFirstName() {
         return firstName;
     }
