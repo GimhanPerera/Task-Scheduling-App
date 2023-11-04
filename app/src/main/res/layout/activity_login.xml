@@ -102,7 +102,7 @@
 
 
             <Button
-                android:id="@+id/btn_confirm"
+                android:id="@+id/btn_change"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
