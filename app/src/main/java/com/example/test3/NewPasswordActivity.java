@@ -2,6 +2,7 @@ package com.example.test3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -33,7 +34,9 @@ public class NewPasswordActivity extends AppCompatActivity {
         new_password = findViewById(R.id.new_password);
         confirm_password = findViewById(R.id.confirm_password);
         confirm = findViewById(R.id.btn_change);
-
+        userClass userClassObj = userClass.getInstance();
+        this.loggedInUserId = userClassObj.getLoggedInUserId();
+        Toast.makeText(NewPasswordActivity.this, "Current user1: "+userClassObj.getUserById(loggedInUserId).getFirstName(), Toast.LENGTH_SHORT).show();
         setOnKeyListenerForNewPassword();
         setOnClickListenerForConfirmButton();
     }
@@ -85,14 +88,16 @@ public class NewPasswordActivity extends AppCompatActivity {
                 }
                 if(valid_password){
                     // Add your logic here for a valid password
-                    int loggedInUserId = userClass.getLoggedInUserId();
+                    userClass userClassObj = userClass.getInstance();
                     if (loggedInUserId != -1) {
-                        User user = getUserById(loggedInUserId);
+                        User user = userClassObj.getUserById(loggedInUserId);
+                        Toast.makeText(NewPasswordActivity.this, "Current user: "+userClassObj.getUserById(loggedInUserId).getFirstName(), Toast.LENGTH_SHORT).show();
                         if (user != null) {
                             String password = user.getPassword();
-                            if(password==current_password.getText().toString()){
-                                user.setPassword(new_password.getText().toString());
+                            if(password.equals(current_password.getText().toString())){
+                                userClassObj.getUserById(loggedInUserId).setPassword(new_password.getText().toString());
                                 Toast.makeText(NewPasswordActivity.this, "Password changed", Toast.LENGTH_SHORT).show();
+                                goToHomePage();
                             }else{
                                 Toast.makeText(NewPasswordActivity.this, "Password is wrong", Toast.LENGTH_SHORT).show();
                             }
@@ -105,15 +110,9 @@ public class NewPasswordActivity extends AppCompatActivity {
 
         });
     }
-    private User getUserById(int userId) {
-
-        List<User> userDetails = userClass.getUserDetails();
-        for (User user : userDetails) {
-            if (user.getId() == userId) {
-                return user;
-            }
-        }
-        return null;
+    public void goToHomePage(){
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
     }
 
 }

@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
 
             String input_email = txt_email.getText().toString().trim();
             String input_password = txt_password.getText().toString().trim();
-            userClass userClassObj = new userClass();
+            userClass userClassObj = userClass.getInstance();
 
             List<User> list = userClassObj.getList();
             if(!input_email.isEmpty() && !input_password.isEmpty()) {
@@ -112,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
                             int loggedInUserId = matchedUser.getId(); // Assuming getId() returns the user's ID
 
                             // Store the logged-in user's ID in userClass (or any other data storage method)
-                            userClass.getInstance().setLoggedInUserId(loggedInUserId);
+                            userClassObj.setLoggedInUserId(loggedInUserId);
                             Intent intent = new Intent(this, HomeActivity.class);
                             startActivity(intent);
 
