@@ -13,5 +13,8 @@
         <!-- Change the color of the calendar month and year labels -->
         <item name="android:textColorPrimary">@color/darkBlue</item>
     </style>
+    <style name="colored_checkbox." parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/blue</item>
+    </style>
 
 </resources>

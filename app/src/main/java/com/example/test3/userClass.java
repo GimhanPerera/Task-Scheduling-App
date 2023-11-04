@@ -15,7 +15,7 @@ public class userClass {
     private static int loggedInUserId = -1; // Initialize to a default value
 
 
-    userClass() {
+    private userClass() {
         addUserList();
     }
 
@@ -45,6 +45,17 @@ public class userClass {
     public static void setNewUser(User NewUser) {
         userClass.userDetails.add(NewUser);
         nextId++;
+    }
+
+    public static User getUserById(int logedOne){
+        User log = null;
+        for (User user : userDetails) {
+            if (logedOne == user.getId()) {
+                log = user;
+                break;
+            }
+        }
+        return log;
     }
 
     public static int getNextId() {

@@ -78,9 +78,10 @@ public class ProfileFragment extends Fragment {
         firstNameTextView = view.findViewById(R.id.name);
         logout = view.findViewById(R.id.logOutText);
         newpd = view.findViewById(R.id.newpwd);
-        int loggedInUserId = userClass.getLoggedInUserId();
+        userClass userClassObj = userClass.getInstance();
+        int loggedInUserId = userClassObj.getLoggedInUserId();
         if (loggedInUserId != -1) {
-            User user = getUserById(loggedInUserId);
+            User user = userClassObj.getUserById(loggedInUserId);
             if (user != null) {
                 String firstName = user.getFirstName();
                 firstNameTextView.setText(firstName);
@@ -101,7 +102,7 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
-
+    /**
     private User getUserById(int userId) {
 
         List<User> userDetails = userClass.getUserDetails();
@@ -112,6 +113,7 @@ public class ProfileFragment extends Fragment {
         }
         return null;
     }
+     **/
 
     public void goToLoginPage(){
         Intent intent = new Intent(getActivity(), LoginActivity.class);

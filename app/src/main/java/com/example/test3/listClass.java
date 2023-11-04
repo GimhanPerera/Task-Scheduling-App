@@ -86,8 +86,9 @@ public class listClass{
             }
             taskList.addAll(tempList);
         }
-
-
+    }
+    public void clearAllTasks(){
+        taskList.clear();
     }
 }
 
