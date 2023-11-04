@@ -71,5 +71,23 @@ public class listClass{
     public void reArrangeBydate(){
         Collections.sort(taskList, Task.TaskDateAscendingComparator);
     }
+
+    public void reArrangeByChecked(){
+        List<Task> tempList = new ArrayList<Task>();
+        for (Task task : taskList) {
+            if(task.getCompletion()){
+                tempList.add(task);
+            }
+        }
+        if(!tempList.isEmpty()){
+            for (Task task : tempList) {
+                int index = taskList.indexOf(task);
+                taskList.remove(index);
+            }
+            taskList.addAll(tempList);
+        }
+
+
+    }
 }
 

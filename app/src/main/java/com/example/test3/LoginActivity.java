@@ -1,4 +1,10 @@
 package com.example.test3;
+
+//import static com.example.test3.userClass.userDetails;
+
+
+import static android.app.PendingIntent.getActivity;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -184,11 +190,5 @@ public class LoginActivity extends AppCompatActivity {
         }
         return false;
     }
-
-
-
-
 }
-
-
 

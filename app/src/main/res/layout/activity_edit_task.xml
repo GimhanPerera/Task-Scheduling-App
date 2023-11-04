@@ -25,8 +25,8 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="30dp"
-        android:layout_y="143dp"
+        android:layout_x="35dp"
+        android:layout_y="149dp"
         android:text="Title"
         android:textColor="#000000"
         android:textSize="22dp" />
@@ -35,17 +35,17 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="78dp"
-        android:layout_y="143dp"
+        android:layout_x="79dp"
+        android:layout_y="148dp"
         android:text="*"
         android:textColor="#DD1818" />
 
     <EditText
         android:id="@+id/editTask_Title"
-        android:layout_width="335dp"
+        android:layout_width="348dp"
         android:layout_height="wrap_content"
-        android:layout_x="30dp"
-        android:layout_y="173dp"
+        android:layout_x="34dp"
+        android:layout_y="190dp"
         android:ems="10"
         android:hint="titile....."
         android:inputType="text"
@@ -58,26 +58,26 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="32dp"
-        android:layout_y="233dp"
+        android:layout_x="34dp"
+        android:layout_y="258dp"
         android:text="Description"
         android:textColor="#000000"
         android:textSize="22dp" />
 
     <EditText
         android:id="@+id/editTask_Description"
-        android:layout_width="333dp"
-        android:layout_height="123dp"
-        android:layout_x="33dp"
-        android:layout_y="269dp"
+        android:layout_width="345dp"
+        android:layout_height="156dp"
+        android:layout_x="34dp"
+        android:layout_y="297dp"
         android:background="@drawable/edit_text_background"
         android:ems="10"
         android:gravity="start|top"
         android:hint="description"
         android:inputType="textMultiLine"
-        android:textColor="#454545"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
+        android:textColor="#454545"
         android:textSize="24dp" />
 
 
@@ -85,46 +85,49 @@
         android:id="@+id/selectedDateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="43dp"
-        android:layout_y="454dp"
-        android:text=""
+        android:layout_x="34dp"
+        android:layout_y="495dp"
+        android:text="2023-10-30"
         android:textColor="#000000"
-        android:textSize="18sp" />
+        android:textSize="20dp" />
 
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="33dp"
-        android:layout_y="562dp"
-        android:text="   Set notification"
+        android:layout_x="30dp"
+        android:layout_y="609dp"
+        android:text="  Set notification"
         android:textColor="#000000"
         android:textSize="22dp" />
+
+    <Button
+        android:id="@+id/selectTimeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="293dp"
+        android:layout_y="548dp"
+        android:background="@drawable/blue_border"
+        android:text="Set Time"
+        android:textColor="@color/blue"
+        android:textSize="18dp"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="36dp"
-        android:layout_y="525dp"
+        android:layout_x="32dp"
+        android:layout_y="556dp"
         android:src="@drawable/alarmclock" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="82dp"
-        android:layout_y="520dp"
-        android:text="Set time"
-        android:textColor="#000000"
-        android:textSize="22dp" />
 
     <Button
         android:id="@+id/set_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="273dp"
-        android:layout_y="507dp"
+        android:layout_x="67dp"
+        android:layout_y="540dp"
         android:background="#00FFFFFF"
         android:text="None  >"
         android:textColor="#454545"
@@ -144,8 +147,8 @@
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:layout_x="27dp"
-        android:layout_y="634dp"
+        android:layout_x="21dp"
+        android:layout_y="700dp"
         android:background="@drawable/button_bg"
         android:backgroundTint="@color/blue"
         android:text="Done"
@@ -157,11 +160,12 @@
         android:id="@+id/selectDateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="241dp"
-        android:layout_y="432dp"
-        android:backgroundTint="#AA46F3"
-        android:text="Date Picker"
-        android:textColor="#FFFFFF"
+        android:layout_x="294dp"
+        android:layout_y="486dp"
+        android:background="@drawable/blue_border"
+        android:text="Set Date"
+        android:textColor="@color/blue"
+        android:textSize="18dp"
         android:textStyle="bold" />
 
 </AbsoluteLayout>

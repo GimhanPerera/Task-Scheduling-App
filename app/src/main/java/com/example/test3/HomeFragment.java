@@ -1,5 +1,6 @@
 package com.example.test3;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -161,19 +162,14 @@ public class HomeFragment extends Fragment {
         return v;
     }
 
-
-    private void fillTaskList() {
-        Task t0 = new Task(1,"Do homework","Nothing",2023,10,28);
-        Task t1 = new Task(2,"Do Assignment","Nothing",2023,10,26);
-        Task t2 = new Task(3,"Say hay","Nothing",2023,10,26);
-        taskList.addAll(Arrays.asList(new Task[]{t0,t1,t2}));
-    }
-
     public void reArrange(){
         Toast.makeText(requireContext(),"reArrange in HmFr", Toast.LENGTH_SHORT).show();
         listClass object=listClass.getInstance();
         object.reArrangeBydate();
+        object.reArrangeByChecked();
+        //object.reArrangeByChecked();
         mAdapter.notifyDataSetChanged();
+        Toast.makeText(requireContext(),"Test: notifyDataSetChanged", Toast.LENGTH_SHORT).show();//For Testing
         //mAdapter = new ToDoAdapter(object.getTaskList(), requireContext());//May be occur a problem
     }
 
@@ -186,24 +182,26 @@ public class HomeFragment extends Fragment {
 
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-            listClass object=listClass.getInstance();
-            Task temp = object.getTaskList().get(viewHolder.getLayoutPosition());
-            object.getTaskList().remove(viewHolder.getLayoutPosition()); //Remove the item
-            reArrange();//Rearrange
-            Snackbar snackbar = Snackbar.make(relLayout, "Item deleted", Snackbar.LENGTH_SHORT)
-                    .setAction("UNDO", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            //Task temp = new Task();
-                            int nexid = object.getNextId();
-                            object.setNewTask(temp);
-                            reArrange();
-                            Toast.makeText(requireContext(),"DONE: "+temp.getTitle(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-            snackbar.show();
-
-
+            try{
+                listClass object=listClass.getInstance();
+                Task temp = object.getTaskList().get(viewHolder.getLayoutPosition());
+                object.getTaskList().remove(viewHolder.getLayoutPosition()); //Remove the item
+                reArrange();//Rearrange
+                Snackbar snackbar = Snackbar.make(relLayout, "Item deleted", Snackbar.LENGTH_SHORT)
+                        .setAction("UNDO", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                //Task temp = new Task();
+                                //int nexid = object.getNextId();
+                                object.setNewTask(temp);
+                                reArrange();
+                                Toast.makeText(requireContext(),"DONE: "+temp.getTitle(), Toast.LENGTH_SHORT).show();//For Testing
+                            }
+                        });
+                snackbar.show();
+            }catch (Exception ex){
+                Toast.makeText(requireContext(),"Exception!!", Toast.LENGTH_SHORT).show();
+            }
             //taskList.remove(viewHolder.getLayoutPosition());//0,1,2
 
             //mAdapter.notifyDataSetChanged();
