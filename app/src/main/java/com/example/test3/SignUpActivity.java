@@ -10,27 +10,19 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 //import android.widget.EditText;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-//import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import java.util.regex.Matcher;
 
 public class SignUpActivity extends AppCompatActivity {
-
-    private static final Pattern PASSWORD_PATTERN =
-            Pattern.compile("^" +
-                    "(?=.*[0-9])" +
-                    "(?=.*[a-z])" +
-                    "(?=.*[A-Z])" +
-                    "(?=.*[a-zA-Z])" +
-                    "(?=.*[@#$%^&+=])" +
-                    "(?=\\S+$)" +
-                    ".{8,}" +
-                    "$");
     private Button btn_signUp;
     private TextView txt_backToSignIn;
     private TextInputEditText input_firstName;
@@ -43,6 +35,7 @@ public class SignUpActivity extends AppCompatActivity {
     private TextInputLayout layout_password;
     private TextInputEditText input_confirmPassword;
     private TextInputLayout layout_confirmPassword;
+    private CheckBox checkBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +54,7 @@ public class SignUpActivity extends AppCompatActivity {
         layout_password = findViewById(R.id.layout_password);
         input_confirmPassword = findViewById(R.id.confirmPassword);
         layout_confirmPassword = findViewById(R.id.layout_confirmPassword);
-
+        checkBox = findViewById(R.id.checkBox);
 
         btn_signUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,145 +74,115 @@ public class SignUpActivity extends AppCompatActivity {
 
         //DO SIGN UP VALIDATION HERE
 
-        //first name validations
-        input_firstName.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        String firstName = input_firstName.getText().toString().trim();
+        String lastName = input_lastName.getText().toString().trim();
+        String email = input_email.getText().toString().trim();
+        String password = input_password.getText().toString().trim();
+        String confirmPassword = input_confirmPassword.getText().toString().trim();
 
+        if( !firstName.isEmpty() && !lastName.isEmpty() && !email.isEmpty() && !password.isEmpty() && !confirmPassword.isEmpty()) {
+            if (validateFirstName() & validateLastName() & validateEmail() & validatePassword() & validateConfirmPassword(password, confirmPassword) & validateCheckBox() ) {
+                Intent intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
             }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String FirstName = s.toString();
-
-                if (FirstName.isEmpty()) {
-                    layout_firstName.setError("Field can't be empty");
-                } else {
-                    layout_firstName.setError(null);
-                }
-
+        }else {
+            if(firstName.isEmpty()){
+                layout_firstName.setError("     First name is required");
+            } else if (lastName.isEmpty()) {
+                layout_lastName.setError("     Last name is required");
+            } else if (email.isEmpty()) {
+                layout_email.setError("     Email is required");
+            } else if (password.isEmpty()){
+                layout_password.setError("     Password is can not be empty");
+            }else {
+                layout_confirmPassword.setError("     Confirm password can not be empty");
             }
+        }
 
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        //last name validations
-        input_lastName.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                String lastName = s.toString();
-
-                if (lastName.isEmpty()) {
-                    layout_lastName.setError("Field can't be empty");
-                } else {
-                    layout_lastName.setError(null);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-
-        //email validations
-
-        input_email.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String email = s.toString();
-
-                if (email.isEmpty()) {
-                    layout_email.setError("Field can't be empty");
-                } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    layout_email.setError("Please enter a valid email address");
-                } else {
-                    layout_email.setError(null);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-
-        //password validations
-        input_password.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String password = s.toString();
-
-                if (password.isEmpty()) {
-                    layout_password.setError("Field can't be empty");
-                } else if (!PASSWORD_PATTERN.matcher(password).matches()) {
-                    layout_password.setError("Password is too weak");
-                } else {
-                    layout_password.setError(null);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        //confirm password validations
-        // Add a TextWatcher to input_confirmPassword using addOnEditTextAttachedListener
-        input_confirmPassword.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String confirmPassword = s.toString();
-                String password = input_password.getText().toString();
-
-                if (confirmPassword.isEmpty()) {
-                    layout_confirmPassword.setError("Field can't be empty");
-                } else if (!confirmPassword.equals(password)) {
-                    layout_confirmPassword.setError("Passwords do not match");
-                } else {
-                    layout_confirmPassword.setError(null);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
     }
 
     public void goToSignInPage() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
+    private boolean validateFirstName() {
+        String firstName = input_firstName.getText().toString().trim();
+
+            String regexPattern = "^[a-zA-Z.' ]+$";
+            Pattern pattern = Pattern.compile(regexPattern);
+            Matcher matcher = pattern.matcher(firstName);
+        if (matcher.matches()) {
+            layout_firstName.setError("");
+            return true;
+        } else {
+            layout_firstName.setError("     Enter a valid name");
+            return false;
+        }
+    }
+    private boolean validateLastName() {
+
+        String lastName = input_lastName.getText().toString().trim();
+
+        String regexPattern = "^[a-zA-Z.' ]+$";
+        Pattern pattern = Pattern.compile(regexPattern);
+        Matcher matcher = pattern.matcher(lastName);
+
+        if (matcher.matches()){
+            layout_lastName.setError("");
+            return true;
+        }else {
+            layout_lastName.setError("     Enter a valid name");
+            return false;
+        }
+    }
+    private boolean validateEmail() {
+        String email = input_email.getText().toString().trim();
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            layout_email.setError("     Invalid email address");
+            return false;
+        } else{
+            layout_email.setError("");
+            return true;
+        }
+    }
+    private boolean validatePassword() {
+        String password = input_password.getText().toString().trim();
+
+        String regexPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=*]).{8,}$";
+        Pattern pattern = Pattern.compile(regexPattern);
+        Matcher matcher = pattern.matcher(password);
+
+        if (matcher.matches()) {
+            if (password.length()>8){
+                layout_password.setError("");
+                return true;
+            } else {
+                layout_password.setError("    Password must contain at least 8 characters");
+                return false;
+            }
+        } else{
+            layout_password.setError("Password is too weak");
+            return false;
+        }
+    }
+    private boolean validateConfirmPassword(String password, String confirmPassword){
+        if (password.equals(confirmPassword)){
+            layout_confirmPassword.setError("");
+            return true;
+        }else {
+            layout_confirmPassword.setError("     Passwords must be same");
+            return false;
+        }
+    }
+
+    private boolean validateCheckBox(){
+
+        if (checkBox.isChecked()){
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
 }

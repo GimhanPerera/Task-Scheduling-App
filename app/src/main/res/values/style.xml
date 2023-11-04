@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="colored_checkbox" parent="Theme.AppCompat.Light">
+        <!--Selected item-->
+        <item name="colorAccent">@color/darkBlue</item>
+        <!--not-selected item-->
+        <item name="android:textColorSecondary">@android:color/darker_gray</item>
+    </style>
+    <style name="DatePickerDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <!-- Change the color of the selected date -->
+        <item name="colorAccent">@color/darkBlue</item>
+
+        <!-- Change the color of the calendar month and year labels -->
+        <item name="android:textColorPrimary">@color/darkBlue</item>
+    </style>
+    
+    <!--change the checkbox colour-->
+    <style name="colored_checkbox." parent="Theme.AppCompat.Light">
+        <!--cheked-->
+       <item name="colorAccent">@color/blue </item>
+    </style>
+
+</resources>

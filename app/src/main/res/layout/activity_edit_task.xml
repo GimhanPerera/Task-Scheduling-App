@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_x="27dp"
         android:layout_y="74dp"
-        android:text="Add Task"
+        android:text="Edit Task"
         android:textAlignment="viewStart"
         android:textColor="#000000"
         android:textSize="40dp"
@@ -31,7 +31,6 @@
         android:textColor="#000000"
         android:textSize="22dp" />
 
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -42,7 +41,7 @@
         android:textColor="#DD1818" />
 
     <EditText
-        android:id="@+id/addTask_Title"
+        android:id="@+id/editTask_Title"
         android:layout_width="348dp"
         android:layout_height="wrap_content"
         android:layout_x="34dp"
@@ -66,7 +65,7 @@
         android:textSize="22dp" />
 
     <EditText
-        android:id="@+id/addTask_Description"
+        android:id="@+id/editTask_Description"
         android:layout_width="345dp"
         android:layout_height="156dp"
         android:layout_x="34dp"
@@ -80,6 +79,7 @@
         android:paddingRight="5dp"
         android:textColor="#454545"
         android:textSize="24dp" />
+
 
     <TextView
         android:id="@+id/selectedDateTextView"
@@ -121,16 +121,17 @@
         android:layout_y="556dp"
         android:src="@drawable/alarmclock" />
 
+
     <Button
         android:id="@+id/set_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="62dp"
-        android:layout_y="546dp"
+        android:layout_x="67dp"
+        android:layout_y="540dp"
         android:background="#00FFFFFF"
         android:text="None  >"
         android:textColor="#454545"
-        android:textSize="18dp" />
+        android:textSize="20dp" />
 
     <ImageButton
         android:id="@+id/Back"
@@ -141,7 +142,7 @@
         android:src="@drawable/baseline_arrow_back_24" />
 
     <Button
-        android:id="@+id/btn_add"
+        android:id="@+id/btn_done"
         android:layout_width="366dp"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
@@ -150,7 +151,7 @@
         android:layout_y="700dp"
         android:background="@drawable/button_bg"
         android:backgroundTint="@color/blue"
-        android:text="Add"
+        android:text="Done"
         android:textColor="@color/white"
         android:textSize="25sp"
         app:cornerRadius="20dp" />

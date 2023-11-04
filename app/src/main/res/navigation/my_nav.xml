@@ -20,4 +20,9 @@
         android:name="com.example.test3.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/editTaskFragment"
+        android:name="com.example.test3.EditTaskFragment"
+        android:label="fragment_edit_task"
+        tools:layout="@layout/fragment_edit_task" />
 </navigation>
