@@ -5,10 +5,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.test3.Model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -23,6 +25,9 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        // Retrieve the user from the intent
+
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         Menu menu = bottomNavigationView.getMenu();
@@ -51,6 +56,8 @@ public class HomeActivity extends AppCompatActivity {
                     fragmentTransaction.commit();
                 }
                 else if(item.getTitle()==item3.getTitle()){
+
+
                     getSupportFragmentManager().beginTransaction().replace(R.id.container,profileFragment).commit();
                 }
 

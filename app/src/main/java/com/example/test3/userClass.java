@@ -12,6 +12,8 @@ public class userClass {
 
     private  static int nextId = 5;
     private static userClass instance = new userClass();
+    private static int loggedInUserId = -1; // Initialize to a default value
+
 
     userClass() {
         addUserList();
@@ -51,5 +53,13 @@ public class userClass {
 
     public static void setNextId(int nextId) {
         userClass.nextId = nextId;
+    }
+
+    public static int getLoggedInUserId() {
+        return loggedInUserId;
+    }
+
+    public static void setLoggedInUserId(int userId) {
+        loggedInUserId = userId;
     }
 }
