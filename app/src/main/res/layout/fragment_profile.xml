@@ -88,7 +88,7 @@
             android:id="@+id/imageView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="15dp"
             android:src="@drawable/settings_icon" />
 
         <TextView
@@ -184,7 +184,7 @@
             android:layout_width="37dp"
             android:layout_height="38dp"
 
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="29dp"
             android:src="@drawable/baseline_logout_24" />
 
         <TextView
