@@ -40,7 +40,7 @@ public class NewPasswordActivity extends AppCompatActivity {
         confirm = findViewById(R.id.btn_confirm);
         userClass userClassObj = userClass.getInstance();//create an instance of user class to access user data
         this.loggedInUserId = userClassObj.getLoggedInUserId();//Get current user's id
-        Toast.makeText(NewPasswordActivity.this, "Current user1: "+userClassObj.getUserById(loggedInUserId).getFirstName(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(NewPasswordActivity.this, "Current user1: "+userClassObj.getUserById(loggedInUserId).getFirstName(), Toast.LENGTH_SHORT).show();
         setOnKeyListenerForNewPassword();
         setOnClickListenerForConfirmButton();
         setOnClickListenerForBackButton();
