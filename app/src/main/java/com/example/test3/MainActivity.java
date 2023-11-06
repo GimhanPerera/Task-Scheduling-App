@@ -1,3 +1,4 @@
+//IM/2020/049 - Gimhan
 package com.example.test3;
 
 import androidx.annotation.NonNull;
@@ -24,18 +25,19 @@ private Button button;
         setContentView(R.layout.welcome_page);
 
         button=findViewById(R.id.btn_getstarted);
-        button.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {//Get started btn onClick Listener
             @Override
             public void onClick(View v) {
                 btnGetStarted();
             }
         });
-
-
     }
+
+    //Open login Activity
     public void btnGetStarted(){
         Intent intent=new Intent(this,LoginActivity.class);
         startActivity(intent);
     }
 
 }
+//IM/2020/049 - Gimhan

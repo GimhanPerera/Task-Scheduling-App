@@ -1,11 +1,20 @@
 package com.example.test3;
+//IM/2020/049 - Naduni
+//import static com.example.test3.userClass.userDetails;
+
+
+import static android.app.PendingIntent.getActivity;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -16,44 +25,39 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
-   /*IM-2020-025  Naduni Rabel - creating a regular expression for the password pattern
-   * at least 1 digit, 1 lower case, 1 upper case, letters, 1 special character, no spaces,
-   * at least 4 characters*/
+    //IM/2020/049 - Naduni
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
-                    //"(?=.*[0-9])" +
-                    //"(?=.*[a-z])" +
-                    //"(?=.*[A-Z])" +
-                    "(?=.*[a-zA-Z])" +
-                    "(?=.*[@#$%^&+=])" +
-                    "(?=\\S+$)" +
-                    ".{4,}" +
+                    //"(?=.*[0-9])" +         //at least 1 digit
+                    //"(?=.*[a-z])" +         //at least 1 lower case letter
+                    //"(?=.*[A-Z])" +         //at least 1 upper case letter
+                    "(?=.*[a-zA-Z])" +      //any letter
+                    "(?=.*[@#$%^&+=])" +    //at least 1 special character
+                    "(?=\\S+$)" +           //no white spaces
+                    ".{4,}" +               //at least 4 characters
                     "$");
-    /*IM-2020-025  Naduni Rabel - creating references to the login button, signup textview,
-    edittext for email and password*/
     private Button btn_logIn;
     private TextView txt_signUp;
     private EditText txt_email;
     private EditText txt_password;
-    /*IM-2020-025 Naduni Rabel*/
+
     User matchedUser = null;
-    /*IM-2020-025 Naduni Rabel - Alert dialog builder to show error messages upon validations */
+
     AlertDialog.Builder builder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //creating references to the elements
+        // Initialize UI elements
         btn_logIn = findViewById(R.id.btn_confirm);
         txt_signUp = findViewById(R.id.txt_signup);
         txt_email = findViewById(R.id.email);
         txt_password = findViewById(R.id.password);
-
         ConstraintLayout parent = findViewById(R.id.pt);
         parent.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public boolean onTouch(View v, MotionEvent event) {//Set no error msg
                 txt_email.setError(null);
                 txt_password.setError(null);
                 return false;
@@ -86,63 +90,56 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    //IM/2020/049 - Naduni
     public void btnLogin(){
 
-            String input_email = txt_email.getText().toString().trim();
-            String input_password = txt_password.getText().toString().trim();
+            String input_email = txt_email.getText().toString().trim();//get user email
+            String input_password = txt_password.getText().toString().trim();//get user pwd
             userClass userClassObj = userClass.getInstance();
 
-            List<User> list = userClassObj.getList();
-            if(!input_email.isEmpty() && !input_password.isEmpty()) {
-                if(validateEmail() & validatePassword()) {
-                    for (User user : list) {
+            List<User> list = userClassObj.getList();//Get user details list
+            if(!input_email.isEmpty() && !input_password.isEmpty()) {//check email & pwd are empty or not
+                if(validateEmail() & validatePassword()) {//Check validation
+                    for (User user : list) {//Check email
                         if (user.getEmail().equals(input_email)) {
                             matchedUser = user;
                             break;
                         }
                     }
-                    if (matchedUser != null) {
+                    if (matchedUser != null) {  //if emailis match with existing user
                         String userPwd = matchedUser.getPassword();
-                        if (userPwd.equals(input_password)) {
+                        if (userPwd.equals(input_password)) {//Check pwd
+                            //if pwd is correct
 
+                            int loggedInUserId = matchedUser.getId(); // get user ID
 
-                            int loggedInUserId = matchedUser.getId(); // Assuming getId() returns the user's ID
-
-                            // Store the logged-in user's ID in userClass (or any other data storage method)
-                            userClassObj.setLoggedInUserId(loggedInUserId);
-                            Intent intent = new Intent(this, HomeActivity.class);
+                            userClassObj.setLoggedInUserId(loggedInUserId);//Set user ID as logged in user id
+                            Intent intent = new Intent(this, HomeActivity.class);//Open home page
                             startActivity(intent);
-
-
-
                         }
-                        else {
-                            //password
-                        showAlertDialog("Incorrect Password", "The password is incorrect.");
-
+                        else {//if password incorrect
+                            showAlertDialog("Incorrect Password", "The password is incorrect.");
                          }
 
                     }
                     else{
                     //invalid username or password
                         showAlertDialog("Invalid Credentials", "Email not found.");
-
                     }
                 }
                 else{
                     showAlertDialog("Invalid Input", "Please enter valid email and password.");
-
                 }
             }
             else{
-
               //  cannot be empty
                 showAlertDialog("Empty Fields", "Email and password cannot be empty.");
             }
-
-
+        //IM/2020/049 - Naduni
     }
 
+    //IM/2020/049 - Naduni
+    //Show alert dialog box
     private void showAlertDialog(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(title)
@@ -155,11 +152,12 @@ public class LoginActivity extends AppCompatActivity {
                 })
                 .show();
     }
-    public void goToSignUpPage(){
+
+    public void goToSignUpPage(){//Open signup page
         Intent intent=new Intent(this,SignUpActivity.class);
         startActivity(intent);
     }
-    private boolean validateEmail(){
+    private boolean validateEmail(){//Email validations
        String input_email = txt_email.getText().toString().trim();
 
        if(input_email.isEmpty()){
@@ -188,4 +186,5 @@ public class LoginActivity extends AppCompatActivity {
         return false;
     }
 }
+//IM/2020/049 - Naduni
 
