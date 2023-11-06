@@ -1,20 +1,11 @@
 package com.example.test3;
-
-//import static com.example.test3.userClass.userDetails;
-
-
-import static android.app.PendingIntent.getActivity;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
-import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -25,29 +16,34 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
+   /*IM-2020-025  Naduni Rabel - creating a regular expression for the password pattern
+   * at least 1 digit, 1 lower case, 1 upper case, letters, 1 special character, no spaces,
+   * at least 4 characters*/
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
-                    //"(?=.*[0-9])" +         //at least 1 digit
-                    //"(?=.*[a-z])" +         //at least 1 lower case letter
-                    //"(?=.*[A-Z])" +         //at least 1 upper case letter
-                    "(?=.*[a-zA-Z])" +      //any letter
-                    "(?=.*[@#$%^&+=])" +    //at least 1 special character
-                    "(?=\\S+$)" +           //no white spaces
-                    ".{4,}" +               //at least 4 characters
+                    //"(?=.*[0-9])" +
+                    //"(?=.*[a-z])" +
+                    //"(?=.*[A-Z])" +
+                    "(?=.*[a-zA-Z])" +
+                    "(?=.*[@#$%^&+=])" +
+                    "(?=\\S+$)" +
+                    ".{4,}" +
                     "$");
+    /*IM-2020-025  Naduni Rabel - creating references to the login button, signup textview,
+    edittext for email and password*/
     private Button btn_logIn;
     private TextView txt_signUp;
     private EditText txt_email;
     private EditText txt_password;
-
+    /*IM-2020-025 Naduni Rabel*/
     User matchedUser = null;
-
+    /*IM-2020-025 Naduni Rabel - Alert dialog builder to show error messages upon validations */
     AlertDialog.Builder builder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        //creating references to the elements
         btn_logIn = findViewById(R.id.btn_change);
         txt_signUp = findViewById(R.id.txt_signup);
         txt_email = findViewById(R.id.email);
