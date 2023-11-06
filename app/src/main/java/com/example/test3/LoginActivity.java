@@ -3,6 +3,9 @@ package com.example.test3;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +13,7 @@ import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -178,6 +182,17 @@ public class LoginActivity extends AppCompatActivity {
             return true;
         }
 
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        // Hide the keyboard when the user touches outside the text areas
+        InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        View view = getCurrentFocus();
+        if (view == null) {
+            view = new View(this);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        return super.onTouchEvent(event);
     }
 }
 //IM/2020/025 - Naduni Rabel

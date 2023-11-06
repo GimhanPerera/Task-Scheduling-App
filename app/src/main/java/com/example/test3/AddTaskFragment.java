@@ -2,10 +2,13 @@
 package com.example.test3;
 //import libraries
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -57,6 +60,9 @@ public class AddTaskFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Add new task
+                if(title.getText().toString().equals("")){
+                    Toast.makeText(requireContext(), "Title cannot be empty", Toast.LENGTH_SHORT).show();
+                }else{
                 //Crete new task object
                 Task newTask = new Task(object.getNextId(), title.getText().toString(), description.getText().toString(), selectedYear, selectedMonth, selectedDay);
                 object.setNewTask(newTask);
@@ -66,6 +72,21 @@ public class AddTaskFragment extends Fragment {
                 ((HomeActivity) getActivity()).openHomePage();//Open home again.
                 //getActivity() -  within a Fragment, it returns the parent Activity(HomeActivity in here) associated with that Fragment.
                 //We call openHomePage(); Method of Parent Activity
+            }}
+        });
+        view.setOnTouchListener(new View.OnTouchListener() {
+
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    InputMethodManager imm = (InputMethodManager) requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    View focusedView = requireActivity().getCurrentFocus();
+                    if (focusedView != null) {
+                        imm.hideSoftInputFromWindow(focusedView.getWindowToken(), 0);
+                    }
+                }
+                return false;
             }
         });
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -123,6 +144,7 @@ public class AddTaskFragment extends Fragment {
 
         datePickerDialog.show();
     }
+
 
 }
 

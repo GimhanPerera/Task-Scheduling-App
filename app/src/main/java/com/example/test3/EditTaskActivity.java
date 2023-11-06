@@ -1,14 +1,19 @@
 package com.example.test3;
 //import libraries
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.test3.Model.Task;
 import java.text.SimpleDateFormat;
@@ -47,6 +52,9 @@ public class EditTaskActivity extends AppCompatActivity {
         selectedDateCalendar.set(Calendar.YEAR, year);
         selectedDateCalendar.set(Calendar.MONTH, month); // Note: Month is zero-based, so January is 0, February is 1, etc.
         selectedDateCalendar.set(Calendar.DAY_OF_MONTH, date);
+        selectedYear = year;
+        selectedMonth = month;
+        selectedDay = date;
 
         // Set references to the UI elements
         EditText editTaskTitle = findViewById(R.id.editTask_Title);
@@ -66,6 +74,11 @@ public class EditTaskActivity extends AppCompatActivity {
                 // Retrieve edited task details from UI elements
                 String editedTitle = editTaskTitle.getText().toString();
                 String editedDescription = editTaskDescription.getText().toString();
+
+                if(editTaskTitle.getText().toString().equals("")){
+                    Toast.makeText(EditTaskActivity.this, "Title cannot be empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 object.setTaskById(taskId, editedTitle, editedDescription, selectedYear, selectedMonth, selectedDay);
 
                 // Set the result to indicate a successful update
@@ -79,6 +92,7 @@ public class EditTaskActivity extends AppCompatActivity {
             }
         });
 
+
         // Set a click listener for the date selection button
         Button selectDateButton = findViewById(R.id.selectDateButton);
         selectDateButton.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +102,7 @@ public class EditTaskActivity extends AppCompatActivity {
                 showDatePickerDialog();
             }
         });
+
 
         // Set a click listener for the back button
         ImageButton btn_back = findViewById(R.id.Back);
@@ -99,6 +114,17 @@ public class EditTaskActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        // Hide the keyboard when the user touches outside the text areas
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        View focusedView = getCurrentFocus();
+        if (focusedView == null) {
+            focusedView = new View(this);
+        }
+        imm.hideSoftInputFromWindow(focusedView.getWindowToken(), 0);
+        return super.onTouchEvent(event);
     }
 
     // Method to display the DatePickerDialog
