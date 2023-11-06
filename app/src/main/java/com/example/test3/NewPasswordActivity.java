@@ -65,7 +65,7 @@ public class NewPasswordActivity extends AppCompatActivity {
         new_password.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                String regex = "^[a-zA-Z0-9]{8,}$";//regex pattern to compare user inputs
+                String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=*]).{8,}$";//regex pattern to compare user inputs
                 String chars = new_password.getText().toString();
                 // Create a Pattern object
                 Pattern pattern = Pattern.compile(regex);
@@ -110,7 +110,7 @@ public class NewPasswordActivity extends AppCompatActivity {
                     userClass userClassObj = userClass.getInstance();//create userClass instance
                     if (loggedInUserId != -1) {
                         User user = userClassObj.getUserById(loggedInUserId);
-                        Toast.makeText(NewPasswordActivity.this, "Current user: "+userClassObj.getUserById(loggedInUserId).getFirstName(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(NewPasswordActivity.this, "Current user: "+userClassObj.getUserById(loggedInUserId).getFirstName(), Toast.LENGTH_SHORT).show();
                         if (user != null) {
                             String password = user.getPassword();
                             if(password.equals(current_password.getText().toString())){// if current password match user's password
