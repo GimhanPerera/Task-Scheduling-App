@@ -98,6 +98,7 @@
         android:layout_x="30dp"
         android:layout_y="609dp"
         android:text="  Set notification"
+        android:theme="@style/colored_checkbox."
         android:textColor="#000000"
         android:textSize="22dp" />
 

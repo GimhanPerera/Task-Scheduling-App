@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.List;
@@ -33,14 +34,28 @@ public class NewPasswordActivity extends AppCompatActivity {
         current_password = findViewById(R.id.current_password);
         new_password = findViewById(R.id.new_password);
         confirm_password = findViewById(R.id.confirm_password);
-        confirm = findViewById(R.id.btn_change);
+        confirm = findViewById(R.id.btn_confirm);
         userClass userClassObj = userClass.getInstance();
         this.loggedInUserId = userClassObj.getLoggedInUserId();
         Toast.makeText(NewPasswordActivity.this, "Current user1: "+userClassObj.getUserById(loggedInUserId).getFirstName(), Toast.LENGTH_SHORT).show();
         setOnKeyListenerForNewPassword();
         setOnClickListenerForConfirmButton();
+        setOnClickListenerForBackButton();
+
     }
 
+    private void setOnClickListenerForBackButton(){
+        ImageButton back_btn;
+        back_btn = findViewById(R.id.Back);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(NewPasswordActivity.this, HomeActivity.class);
+                startActivity(intent);}
+
+        });
+
+    }
     private void setOnKeyListenerForNewPassword() {
         new_password.setOnKeyListener(new View.OnKeyListener() {
             @Override

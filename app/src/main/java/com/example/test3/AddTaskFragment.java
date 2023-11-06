@@ -59,7 +59,7 @@ public class AddTaskFragment extends Fragment {
 
                 Task newTask = new Task(object.getNextId(), title.getText().toString(), description.getText().toString(), selectedYear, selectedMonth, selectedDay);
                 object.setNewTask(newTask);
-                Toast.makeText(requireContext(),"Ad "+newTask.getId()+" "+newTask.getTitle(), Toast.LENGTH_LONG).show();//For testing
+                //Toast.makeText(requireContext(),"Ad "+newTask.getId()+" "+newTask.getTitle(), Toast.LENGTH_LONG).show();//For testing
                 title.setText("");
                 description.setText("");
                 ((HomeActivity) getActivity()).openHomePage();//Open home again.

@@ -163,7 +163,7 @@ public class HomeFragment extends Fragment {
     }
 
     public void reArrange(){
-        Toast.makeText(requireContext(),"reArrange in HmFr", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(requireContext(),"reArrange in HmFr", Toast.LENGTH_SHORT).show();
         listClass object=listClass.getInstance();
         object.reArrangeBydate();
         object.reArrangeByChecked();
@@ -195,7 +195,7 @@ public class HomeFragment extends Fragment {
                                 //int nexid = object.getNextId();
                                 object.setNewTask(temp);
                                 reArrange();
-                                Toast.makeText(requireContext(),"DONE: "+temp.getTitle(), Toast.LENGTH_SHORT).show();//For Testing
+                                //Toast.makeText(requireContext(),"DONE: "+temp.getTitle(), Toast.LENGTH_SHORT).show();//For Testing
                             }
                         });
                 snackbar.show();
