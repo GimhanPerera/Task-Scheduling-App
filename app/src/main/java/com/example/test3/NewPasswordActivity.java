@@ -34,7 +34,7 @@ public class NewPasswordActivity extends AppCompatActivity {
         current_password = findViewById(R.id.current_password);
         new_password = findViewById(R.id.new_password);
         confirm_password = findViewById(R.id.confirm_password);
-        confirm = findViewById(R.id.btn_change);
+        confirm = findViewById(R.id.btn_confirm);
         userClass userClassObj = userClass.getInstance();//create an instance of user class to access user data
         this.loggedInUserId = userClassObj.getLoggedInUserId();//Get current user's id
         Toast.makeText(NewPasswordActivity.this, "Current user1: "+userClassObj.getUserById(loggedInUserId).getFirstName(), Toast.LENGTH_SHORT).show();
