@@ -1,5 +1,5 @@
 package com.example.test3;
-
+//  IM/2020/049 - Naduni
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -35,13 +35,6 @@ public class ProfileFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-
-    public ProfileFragment() {
-        // Required empty public constructor
-
-    }
-
-
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -74,53 +67,46 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //  IM/2020/049 - Naduni
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        // Initialize UI elements
         firstNameTextView = view.findViewById(R.id.name);
         logout = view.findViewById(R.id.logOutText);
         newpd = view.findViewById(R.id.newpwd);
         userClass userClassObj = userClass.getInstance();
-        int loggedInUserId = userClassObj.getLoggedInUserId();
+        int loggedInUserId = userClassObj.getLoggedInUserId();//get logged user
         if (loggedInUserId != -1) {
             User user = userClassObj.getUserById(loggedInUserId);
             if (user != null) {
-                String firstName = user.getFirstName();
-                firstNameTextView.setText(firstName);
+                String firstName = user.getFirstName();//get username to a variable
+                firstNameTextView.setText(firstName);//Set user name in Text view
             }
         }
-        logout.setOnClickListener(new View.OnClickListener() {
+        logout.setOnClickListener(new View.OnClickListener() {//Logout btn listener
             @Override
             public void onClick(View v) {
                 goToLoginPage();
             }
         });
 
-        newpd.setOnClickListener(new View.OnClickListener() {
+        newpd.setOnClickListener(new View.OnClickListener() { // New pwd btn listener
             @Override
             public void onClick(View v) {
                 goToNewPasswordPage();}
         });
         return view;
+        //  IM/2020/049 - Naduni
     }
 
-    /**
-    private User getUserById(int userId) {
-
-        List<User> userDetails = userClass.getUserDetails();
-        for (User user : userDetails) {
-            if (user.getId() == userId) {
-                return user;
-            }
-        }
-        return null;
-    }
-     **/
-
-    public void goToLoginPage(){
+    //  IM/2020/049 - Naduni
+    public void goToLoginPage(){//Log out btn : Go back to login page
         Intent intent = new Intent(getActivity(), LoginActivity.class);
         startActivity(intent);
     }
 
-    public void goToNewPasswordPage(){
+    //  IM/2020/049 - Naduni
+    public void goToNewPasswordPage(){// New password btn: Go to new password btn
         Intent intent = new Intent(getActivity(), NewPasswordActivity.class);
         startActivity(intent);
     }

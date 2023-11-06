@@ -29,7 +29,6 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-
     private TextView a;
     private FloatingActionButton btn_action;
 
@@ -45,15 +44,10 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         v = inflater.inflate(R.layout.fragment_home,container,false);
-        //------------------------------
+        // IM/2020/049 - Gimhan
         this.relLayout= v.findViewById(R.id.relayout);
         listClass object = listClass.getInstance();//get task list
-        //fillTaskList();
-        //final String TAG = "Task APP";
-        //Log.d(TAG,"onCreate: "+taskList.toString());//FOR TESTING
-        //Toast.makeText(this,"Task count = "+taskList.size(),Toast.LENGTH_SHORT).show();
 
-        //------------------------------
         taskRecyclerView = v.findViewById(R.id.taskRecyclerView);
         taskRecyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(requireContext());//May be occur a problem
@@ -139,20 +133,11 @@ public class HomeFragment extends Fragment {
 
         reArrange();//Arrange the order
 
-        //taskRecyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
-        //------------------------------------
-
         btn_action = v.findViewById(R.id.btn_action);
         btn_action.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                //Intent intent = new Intent(requireContext(), AddTaskFragment.class);
-                //startActivity(intent);
-                //HomeActivity.openAddPage();
+            public void onClick(View v) {//Open new task page
                 ((HomeActivity) getActivity()).openAddPage();
-                //Bundle result = new Bundle();
-                //result.putString("df1","Hello");
-                //getParentFragmentManager().setFragmentResult("dataForm1",result);
             }
         });
 
@@ -163,16 +148,19 @@ public class HomeFragment extends Fragment {
     }
 
     public void reArrange(){
+        // IM/2020/049 - Gimhan
+        //Rearrange the task list
         //Toast.makeText(requireContext(),"reArrange in HmFr", Toast.LENGTH_SHORT).show();
         listClass object=listClass.getInstance();
         object.reArrangeBydate();
         object.reArrangeByChecked();
-        //object.reArrangeByChecked();
         mAdapter.notifyDataSetChanged();
-        Toast.makeText(requireContext(),"Test: notifyDataSetChanged", Toast.LENGTH_SHORT).show();//For Testing
+        //Toast.makeText(requireContext(),"Test: notifyDataSetChanged", Toast.LENGTH_SHORT).show();//For Testing
         //mAdapter = new ToDoAdapter(object.getTaskList(), requireContext());//May be occur a problem
+        // IM/2020/049 - Gimhan
     }
 
+    // IM/2020/049 - Gimhan
     //For delete items
     ItemTouchHelper.SimpleCallback callback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
         @Override
@@ -182,7 +170,7 @@ public class HomeFragment extends Fragment {
 
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-            try{
+            try{//Delete the item by swipping
                 listClass object=listClass.getInstance();
                 Task temp = object.getTaskList().get(viewHolder.getLayoutPosition());
                 object.getTaskList().remove(viewHolder.getLayoutPosition()); //Remove the item
@@ -191,8 +179,6 @@ public class HomeFragment extends Fragment {
                         .setAction("UNDO", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                //Task temp = new Task();
-                                //int nexid = object.getNextId();
                                 object.setNewTask(temp);
                                 reArrange();
                                 //Toast.makeText(requireContext(),"DONE: "+temp.getTitle(), Toast.LENGTH_SHORT).show();//For Testing
@@ -202,9 +188,6 @@ public class HomeFragment extends Fragment {
             }catch (Exception ex){
                 Toast.makeText(requireContext(),"Exception!!", Toast.LENGTH_SHORT).show();
             }
-            //taskList.remove(viewHolder.getLayoutPosition());//0,1,2
-
-            //mAdapter.notifyDataSetChanged();
         }
     };
-}
+}// IM/2020/049 - Gimhan

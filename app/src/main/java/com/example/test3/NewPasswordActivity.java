@@ -45,6 +45,7 @@ public class NewPasswordActivity extends AppCompatActivity {
     }
 
     private void setOnClickListenerForBackButton(){
+        //  IM/2020/030 - Samadhi
         ImageButton back_btn;
         back_btn = findViewById(R.id.Back);
         back_btn.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +55,7 @@ public class NewPasswordActivity extends AppCompatActivity {
                 startActivity(intent);}
 
         });
-
+        //  IM/2020/030 - Samadhi
     }
     private void setOnKeyListenerForNewPassword() {
         new_password.setOnKeyListener(new View.OnKeyListener() {

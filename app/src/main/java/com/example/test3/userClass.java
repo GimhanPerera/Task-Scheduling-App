@@ -1,5 +1,5 @@
 package com.example.test3;
-
+//  IM/2020/049 - Naduni
 
 import com.example.test3.Model.User;
 
@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class userClass {
-    private static List<User> userDetails = new ArrayList<User>();
+    private static List<User> userDetails = new ArrayList<User>();// User details list
 
     private  static int nextId = 5;
     private static userClass instance = new userClass();
@@ -28,6 +28,7 @@ public class userClass {
         userDetails.addAll(Arrays.asList(new User[]{u0,u1,u2,u3}));
     }
 
+    //set-get methoods
     public List<User> getList() {
         return userDetails;
     }
@@ -74,3 +75,4 @@ public class userClass {
         loggedInUserId = userId;
     }
 }
+//  IM/2020/049 - Naduni
