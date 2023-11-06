@@ -1,18 +1,15 @@
+//IM/2020/025 - Naduni Rabel
 package com.example.test3;
-//  IM/2020/049 - Naduni
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.example.test3.Model.User;
 
-import java.util.List;
+
 
 
 /**
@@ -21,7 +18,7 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class ProfileFragment extends Fragment {
-
+    //IM/2020/025 - Naduni Rabel
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -63,11 +60,11 @@ public class ProfileFragment extends Fragment {
 
         }
     }
-
+    //IM/2020/025 - Naduni Rabel
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //  IM/2020/049 - Naduni
+        //  IM/2020/025 - Naduni Rabel
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         // Initialize UI elements
@@ -83,31 +80,33 @@ public class ProfileFragment extends Fragment {
                 firstNameTextView.setText(firstName);//Set user name in Text view
             }
         }
+        //IM/2020/025 - Naduni Rabel
         logout.setOnClickListener(new View.OnClickListener() {//Logout btn listener
             @Override
             public void onClick(View v) {
                 goToLoginPage();
             }
         });
-
+        //IM/2020/025 - Naduni Rabel
         newpd.setOnClickListener(new View.OnClickListener() { // New pwd btn listener
             @Override
             public void onClick(View v) {
                 goToNewPasswordPage();}
         });
         return view;
-        //  IM/2020/049 - Naduni
+        //  IM/2020/025 - Naduni Rabel
     }
 
-    //  IM/2020/049 - Naduni
+    //  IM/2020/025 - Naduni Rabel
     public void goToLoginPage(){//Log out btn : Go back to login page
         Intent intent = new Intent(getActivity(), LoginActivity.class);
         startActivity(intent);
     }
 
-    //  IM/2020/049 - Naduni
+    //  IM/2020/025 - Naduni Rabel
     public void goToNewPasswordPage(){// New password btn: Go to new password btn
         Intent intent = new Intent(getActivity(), NewPasswordActivity.class);
         startActivity(intent);
     }
 }
+//IM/2020/025 - Naduni Rabel
