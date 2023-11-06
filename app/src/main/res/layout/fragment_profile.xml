@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/profilePic"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="146dp"
+        android:layout_height="127dp"
         android:layout_marginStart="210dp"
         android:layout_marginTop="18dp"
         android:layout_marginEnd="73dp"
@@ -27,47 +27,18 @@
         android:id="@+id/profileIntro"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="53dp"
         android:text="Hi"
         android:textColor="@color/black"
         android:textSize="36dp"
         app:layout_constraintBottom_toTopOf="@+id/name"
-        app:layout_constraintEnd_toStartOf="@+id/profilePic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
-
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginEnd="78dp"
-        android:layout_marginBottom="92dp"
-        android:text="Gimhan"
-        android:textColor="@color/black"
-        android:textSize="36dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/profileIntro"
-        app:layout_constraintEnd_toStartOf="@+id/profilePic"
-        app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileIntro" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="43dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="160dp"
-        android:layout_marginBottom="43dp"
-        android:src="@drawable/baseline_arrow_back_24"
-        app:layout_constraintBottom_toTopOf="@+id/profileIntro"
-        app:layout_constraintEnd_toStartOf="@+id/profilePic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.55" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -75,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
 
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         android:orientation="horizontal"
@@ -84,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilePic">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imageView6"
@@ -100,6 +71,7 @@
             android:layout_marginStart="20dp"
             android:text="Edit Profile"
             android:textSize="25dp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -232,6 +204,25 @@
             android:textColor="@color/red"
             android:textSize="25dp" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="85dp"
+        android:text="Gimhan"
+        android:textColor="@color/black"
+        android:textSize="36dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndtOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/profilePic"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileIntro" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
