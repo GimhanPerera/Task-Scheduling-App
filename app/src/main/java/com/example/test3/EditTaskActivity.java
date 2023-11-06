@@ -1,5 +1,5 @@
 package com.example.test3;
-
+//import libraries
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,25 +14,29 @@ import com.example.test3.Model.Task;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-
+//--------------------------------IM/2020/004 - Bimindu Aberathna----------------------------------------------
 public class EditTaskActivity extends AppCompatActivity {
+    // Initialize variables for the selected date and the corresponding TextView
     private int selectedYear = 0;
     private int selectedMonth = 0;
     private int selectedDay = 0;
     private TextView selectedDateTextView, txt_date;
     private Calendar selectedDateCalendar;
-    int date,month,year;
+    int date, month, year;
 
+    // Declare the Task object for the updated task
     private Task updatedTask;
 
+    // Set up the activity when it is created
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task);
 
+        // Retrieve task details from the intent
         Intent intent = getIntent();
         int taskId = intent.getIntExtra("id", -1);
-        listClass object = listClass.getInstance();//get task list
+        listClass object = listClass.getInstance(); // Retrieve the task list
         Task ourTask = object.getTaskById(taskId);
         String taskTitle = ourTask.getTitle();
         String taskDescription = ourTask.getDescription();
@@ -44,16 +48,15 @@ public class EditTaskActivity extends AppCompatActivity {
         selectedDateCalendar.set(Calendar.MONTH, month); // Note: Month is zero-based, so January is 0, February is 1, etc.
         selectedDateCalendar.set(Calendar.DAY_OF_MONTH, date);
 
-        // Populate the UI elements with task details
+        // Set references to the UI elements
         EditText editTaskTitle = findViewById(R.id.editTask_Title);
         EditText editTaskDescription = findViewById(R.id.editTask_Description);
-        //EditText txt_date = findViewById(R.id.selectedDateTextView);
         selectedDateTextView = findViewById(R.id.selectedDateTextView);
 
-        // Populate other UI elements for date and time
+        // Populate the UI elements with task details
         editTaskTitle.setText(taskTitle);
         editTaskDescription.setText(taskDescription);
-        selectedDateTextView.setText(year+"-"+month+"-"+date);
+        selectedDateTextView.setText(year + "-" + month + "-" + date);
 
         // Handle user edits and save changes
         Button saveButton = findViewById(R.id.btn_done);
@@ -63,21 +66,20 @@ public class EditTaskActivity extends AppCompatActivity {
                 // Retrieve edited task details from UI elements
                 String editedTitle = editTaskTitle.getText().toString();
                 String editedDescription = editTaskDescription.getText().toString();
-                object.setTaskById(taskId,editedTitle,editedDescription,selectedYear,selectedMonth,selectedDay);//NEED TO SET REAL DATE
-                // Create an updated task
-                //updatedTask = new Task(taskId, editedTitle, editedDescription, selectedYear, selectedMonth, selectedDay);
+                object.setTaskById(taskId, editedTitle, editedDescription, selectedYear, selectedMonth, selectedDay);
 
-                // 3. Set the result to indicate a successful update
+                // Set the result to indicate a successful update
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("updatedTask", updatedTask);
                 setResult(RESULT_OK, resultIntent);
 
-                // 4. Go back to Homepage
-                Intent intent1=new Intent(EditTaskActivity.this,HomeActivity.class);
+                // Go back to the Homepage
+                Intent intent1 = new Intent(EditTaskActivity.this, HomeActivity.class);
                 startActivity(intent1);
             }
         });
 
+        // Set a click listener for the date selection button
         Button selectDateButton = findViewById(R.id.selectDateButton);
         selectDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,16 +89,19 @@ public class EditTaskActivity extends AppCompatActivity {
             }
         });
 
+        // Set a click listener for the back button
         ImageButton btn_back = findViewById(R.id.Back);
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(EditTaskActivity.this,HomeActivity.class);
+                // Return to the Homepage
+                Intent intent = new Intent(EditTaskActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
         });
     }
 
+    // Method to display the DatePickerDialog
     private void showDatePickerDialog() {
         // Initialize the DatePickerDialog with the current date
         DatePickerDialog datePickerDialog = new DatePickerDialog(
