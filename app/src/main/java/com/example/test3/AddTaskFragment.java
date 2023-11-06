@@ -1,6 +1,6 @@
 
 package com.example.test3;
-
+//import libraries
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,7 +20,8 @@ import com.example.test3.Model.Task;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-
+//----------------------------------IM/2020/004 - Bimindu Aberathna-----------------------------------------------
+// Define the AddTaskFragment class that extends Fragment
 public class AddTaskFragment extends Fragment {
     private TextView selectedDateTextView;
     private Calendar selectedDateCalendar;
@@ -56,7 +57,7 @@ public class AddTaskFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Add new task
-
+                //Crete new task object
                 Task newTask = new Task(object.getNextId(), title.getText().toString(), description.getText().toString(), selectedYear, selectedMonth, selectedDay);
                 object.setNewTask(newTask);
                 //Toast.makeText(requireContext(),"Ad "+newTask.getId()+" "+newTask.getTitle(), Toast.LENGTH_LONG).show();//For testing
@@ -78,7 +79,7 @@ public class AddTaskFragment extends Fragment {
             }
         });
 
-        selectDateButton.setOnClickListener(new View.OnClickListener() {
+        selectDateButton.setOnClickListener(new View.OnClickListener() {//popup calender
             @Override
             public void onClick(View v) {
                 // Show the DatePickerDialog
