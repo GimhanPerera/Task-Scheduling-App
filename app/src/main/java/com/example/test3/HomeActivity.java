@@ -1,5 +1,5 @@
 package com.example.test3;
-
+// IM/2020/049 - Gimhan
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -26,63 +26,40 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // Retrieve the user from the intent
-
-
+        // IM/2020/049 - Gimhan
+        //Set up the navigation bar backend
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         Menu menu = bottomNavigationView.getMenu();
         MenuItem item1 = menu.findItem(R.id.Home);
         MenuItem item2 = menu.findItem(R.id.Notification);
         MenuItem item3 = menu.findItem(R.id.Profile);
 
-        //--------------Initiate the list-----------------
-        //-------------------------------
-
-        //item1.setTitle(item2.getTitle());
-        //String s= item1.getItemId();
-        //bottomNavigationView = findViewById(R.id.bottom_navigation);
         getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
-                if(item.getTitle()==item1.getTitle()){
+            public boolean onNavigationItemSelected(MenuItem item) {    //Set btn navigation
+                if(item.getTitle()==item1.getTitle()){ //Open home fragment
                     getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
                 }
-                else if(item.getTitle()==item2.getTitle()){
+                else if(item.getTitle()==item2.getTitle()){ //Open add task fragment
                     //getSupportFragmentManager().beginTransaction().replace(R.id.container,addTaskFragment).commit();
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.container,addTaskFragment);
-                    fragmentTransaction.commit();
+                    //FragmentManager fragmentManager = getSupportFragmentManager();
+                    //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    //fragmentTransaction.replace(R.id.container,addTaskFragment);
+                    //fragmentTransaction.commit();
                 }
-                else if(item.getTitle()==item3.getTitle()){
-
-
+                else if(item.getTitle()==item3.getTitle()){ //Open profile fragment
                     getSupportFragmentManager().beginTransaction().replace(R.id.container,profileFragment).commit();
                 }
-
-
-                /*switch (item.getItemId()){
-                    case R.id.Home:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
-                        break;
-                    case R.id.Notification:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container,notificationFragment).commit();
-                        break;
-                    case R.id.Profile:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container,profileFragment).commit();
-                        break;
-                }*/
-
                         return false;
                     }
                 });
     }
 
-    public void openAddPage(){
+    public void openAddPage(){  // Open add page
         getSupportFragmentManager().beginTransaction().replace(R.id.container,addTaskFragment).commit();
     }
-    public void openHomePage(){
+    public void openHomePage(){ //Open home page
         getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
     }
 

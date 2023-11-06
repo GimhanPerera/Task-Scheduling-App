@@ -26,23 +26,27 @@ import java.util.regex.Matcher;
 public class SignUpActivity extends AppCompatActivity {
     private Button btn_signUp;
     private TextView txt_backToSignIn;
-    private TextInputEditText input_firstName;
-    private TextInputLayout layout_firstName;
-    private TextInputEditText input_lastName;
-    private TextInputLayout layout_lastName;
-    private TextInputEditText input_email;
-    private TextInputLayout layout_email;
-    private TextInputEditText input_password;
-    private TextInputLayout layout_password;
-    private TextInputEditText input_confirmPassword;
-    private TextInputLayout layout_confirmPassword;
-    private CheckBox checkBox;
+    //IM/2020/030 - Samadhi
+    private TextInputEditText input_firstName; // User's first name input field
+    private TextInputLayout layout_firstName; // Layout for first name input
+    private TextInputEditText input_lastName; // User's last name input field
+    private TextInputLayout layout_lastName; // Layout for last name input
+    private TextInputEditText input_email; // User's email input field
+    private TextInputLayout layout_email; // Layout for email input
+    private TextInputEditText input_password; // User's password input field
+    private TextInputLayout layout_password; // Layout for password input
+    private TextInputEditText input_confirmPassword;  // User's confirm password input field
+    private TextInputLayout layout_confirmPassword; // Layout for confirm password input
+    private CheckBox checkBox; // Checkbox for terms and conditions acceptance
+    //IM/2020/030 - Samadhi
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_sign_up);  // Text view for returning to the sign-in page
 
+        //IM/2020/030 - Samadhi
+        // Initialize UI elements
         btn_signUp = findViewById(R.id.btn_signUp);//Sign up button
         txt_backToSignIn = findViewById(R.id.sighIn_link);
         input_firstName = findViewById(R.id.firstName);
@@ -56,7 +60,10 @@ public class SignUpActivity extends AppCompatActivity {
         input_confirmPassword = findViewById(R.id.confirmPassword);
         layout_confirmPassword = findViewById(R.id.layout_confirmPassword);
         checkBox = findViewById(R.id.checkBox);
+        //IM/2020/030 - Samadhi
+        // Set click listeners for sign-up button and return to sign-in page text
 
+        //IM/2020/049- Gimhan
         btn_signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,11 +77,12 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
     }
+    //IM/2020/049- Gimhan
 
+    // Method to handle the sign-up process
     public void sign_up() {
 
-        //DO SIGN UP VALIDATION HERE
-
+        //IM/2020/030 - Samadhi
         String firstName = input_firstName.getText().toString().trim();
         String lastName = input_lastName.getText().toString().trim();
         String email = input_email.getText().toString().trim();
@@ -108,10 +116,12 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
+    // Method to navigate to the sign-in page
     public void goToSignInPage() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
+    // Method to validate the format of the user's first name
     private boolean validateFirstName() {
         String firstName = input_firstName.getText().toString().trim();
 
@@ -126,6 +136,8 @@ public class SignUpActivity extends AppCompatActivity {
             return false;
         }
     }
+
+    // Method to validate the format of the user's last name
     private boolean validateLastName() {
 
         String lastName = input_lastName.getText().toString().trim();
@@ -135,53 +147,58 @@ public class SignUpActivity extends AppCompatActivity {
         Matcher matcher = pattern.matcher(lastName);
 
         if (matcher.matches()){
-            layout_lastName.setError("");
+            layout_lastName.setError(""); //if correct type of input clear error message
             return true;
         }else {
-            layout_lastName.setError("     Enter a valid name");
+            layout_lastName.setError("     Enter a valid name"); //if input type is not match, gives error
             return false;
         }
     }
     private boolean validateEmail() {
         String email = input_email.getText().toString().trim();
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            layout_email.setError("     Invalid email address");
+            layout_email.setError("     Invalid email address"); //if input type is not match, gives error
             return false;
         } else{
-            layout_email.setError("");
+            layout_email.setError(""); //if correct type of input clear error message
             return true;
         }
     }
     private boolean validatePassword() {
         String password = input_password.getText().toString().trim();
 
+        //password should contain at least one uppercase ,lowercase, special char and number
         String regexPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=*]).{8,}$";
         Pattern pattern = Pattern.compile(regexPattern);
         Matcher matcher = pattern.matcher(password);
 
         if (matcher.matches()) {
             if (password.length()>8){
-                layout_password.setError("");
+                layout_password.setError(""); //if correct type of input and length >7  clear error message
                 return true;
             } else {
-                layout_password.setError("    Password must contain at least 8 characters");
+                layout_password.setError("    Password must contain at least 8 characters"); //if length <8 , gives error message
                 return false;
             }
         } else{
-            layout_password.setError("Password is too weak");
-            return false;
-        }
-    }
-    private boolean validateConfirmPassword(String password, String confirmPassword){
-        if (password.equals(confirmPassword)){
-            layout_confirmPassword.setError("");
-            return true;
-        }else {
-            layout_confirmPassword.setError("     Passwords must be same");
+            layout_password.setError("Password is too weak"); //if input type is not match, gives error
             return false;
         }
     }
 
+    // Method to validate that the password and confirmation match
+    private boolean validateConfirmPassword(String password, String confirmPassword){
+        if (password.equals(confirmPassword)){
+            //confirm passwod should be equal to password
+            layout_confirmPassword.setError(""); // Clear error message
+            return true;
+        }else {
+            layout_confirmPassword.setError("     Passwords must be same"); //if not equal gives error message
+            return false;
+        }
+    }
+
+    // Method to validate if the checkbox for terms and conditions acceptance is checked
     private boolean validateCheckBox(){
 
         if (checkBox.isChecked()){
@@ -192,4 +209,4 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-}
+}//IM/2020/030 - Samadhi

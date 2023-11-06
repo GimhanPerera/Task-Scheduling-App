@@ -60,9 +60,9 @@ public class AddTaskFragment extends Fragment {
                 //Crete new task object
                 Task newTask = new Task(object.getNextId(), title.getText().toString(), description.getText().toString(), selectedYear, selectedMonth, selectedDay);
                 object.setNewTask(newTask);
-                Toast.makeText(requireContext(),"Ad "+newTask.getId()+" "+newTask.getTitle(), Toast.LENGTH_LONG).show();//For testing
-                title.setText("");//reset title
-                description.setText("");//reset description
+                //Toast.makeText(requireContext(),"Ad "+newTask.getId()+" "+newTask.getTitle(), Toast.LENGTH_LONG).show();//For testing
+                title.setText("");
+                description.setText("");
                 ((HomeActivity) getActivity()).openHomePage();//Open home again.
                 //getActivity() -  within a Fragment, it returns the parent Activity(HomeActivity in here) associated with that Fragment.
                 //We call openHomePage(); Method of Parent Activity

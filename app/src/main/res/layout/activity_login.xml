@@ -9,12 +9,6 @@
     android:background="@drawable/login_background"
     android:id="@+id/pt">
 
-
-
-
-
-
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -63,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Login"
+                android:textColor="@color/black"
                 android:textAlignment="center"
                 android:textSize="36sp"
                 android:textStyle="bold"
@@ -108,16 +103,16 @@
 
 
             <Button
-                android:id="@+id/btn_change"
+                android:id="@+id/btn_confirm"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/white"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/button_bg"
                 android:backgroundTint="@color/blue"
                 android:text="Login"
-                android:textSize="25sp"
+                android:textSize="24sp"
                 app:cornerRadius="20dp" />
 
             <LinearLayout
@@ -152,4 +147,3 @@
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-

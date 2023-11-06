@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.List;
@@ -39,8 +40,24 @@ public class NewPasswordActivity extends AppCompatActivity {
         Toast.makeText(NewPasswordActivity.this, "Current user1: "+userClassObj.getUserById(loggedInUserId).getFirstName(), Toast.LENGTH_SHORT).show();
         setOnKeyListenerForNewPassword();
         setOnClickListenerForConfirmButton();
+        setOnClickListenerForBackButton();
+
     }
 
+
+    private void setOnClickListenerForBackButton(){
+        //  IM/2020/030 - Samadhi
+        ImageButton back_btn;
+        back_btn = findViewById(R.id.Back);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(NewPasswordActivity.this, HomeActivity.class);
+                startActivity(intent);}
+
+        });
+        //  IM/2020/030 - Samadhi
+    }
     private void setOnKeyListenerForNewPassword() {//To run when user make keyboard inputs
         new_password.setOnKeyListener(new View.OnKeyListener() {
             @Override
