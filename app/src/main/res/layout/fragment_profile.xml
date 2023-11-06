@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment"
-    android:background="@drawable/profile_background">
+    android:background="@drawable/profile_background"
+    tools:context=".ProfileFragment">
 
     <ImageView
         android:id="@+id/profilePic"
@@ -28,7 +28,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="53dp"
         android:text="Hi"
         android:textColor="@color/black"
@@ -44,18 +44,13 @@
         android:id="@+id/linearLayout"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal"
         android:padding="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/name">
 
         <ImageView
             android:id="@+id/imageView6"
@@ -107,7 +102,6 @@
     </LinearLayout>
 
 
-
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="409dp"
@@ -116,7 +110,6 @@
         android:layout_marginEnd="1dp"
         android:orientation="horizontal"
         android:padding="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
@@ -147,10 +140,9 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="81dp"
         android:orientation="horizontal"
         android:padding="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
@@ -164,7 +156,6 @@
             android:src="@drawable/baseline_password_24" />
 
 
-
         <TextView
             android:id="@+id/newpwd"
             android:layout_width="wrap_content"
@@ -176,23 +167,25 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearlayout5"
         android:layout_width="409dp"
         android:layout_height="81dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        android:padding="20dp">
 
         <ImageView
             android:id="@+id/logOutIcon"
             android:layout_width="37dp"
             android:layout_height="38dp"
 
-            android:layout_marginStart="44dp"
+            android:layout_marginStart="24dp"
             android:src="@drawable/baseline_logout_24" />
 
         <TextView
@@ -217,7 +210,6 @@
         android:textColor="@color/black"
         android:textSize="36dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/profilePic"
         app:layout_constraintHorizontal_bias="0.0"
