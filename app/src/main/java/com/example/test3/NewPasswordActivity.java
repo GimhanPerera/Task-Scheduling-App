@@ -2,10 +2,13 @@ package com.example.test3;
 //This class is to change password
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -129,6 +132,17 @@ public class NewPasswordActivity extends AppCompatActivity {
     public void goToHomePage(){//redirect to home page
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        // Hide the keyboard when the user touches outside the text areas
+        InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        View view = getCurrentFocus();
+        if (view == null) {
+            view = new View(this);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        return super.onTouchEvent(event);
     }
 
 }

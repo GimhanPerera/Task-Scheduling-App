@@ -1,15 +1,11 @@
+//IM/2020/025 - Naduni Rabel
 package com.example.test3;
-//IM/2020/049 - Naduni
-//import static com.example.test3.userClass.userDetails;
-
-
-import static android.app.PendingIntent.getActivity;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +13,7 @@ import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,12 +22,9 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
-    //IM/2020/049 - Naduni
+    //IM/2020/025 - Naduni Rabel
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
-                    //"(?=.*[0-9])" +         //at least 1 digit
-                    //"(?=.*[a-z])" +         //at least 1 lower case letter
-                    //"(?=.*[A-Z])" +         //at least 1 upper case letter
                     "(?=.*[a-zA-Z])" +      //any letter
                     "(?=.*[@#$%^&+=])" +    //at least 1 special character
                     "(?=\\S+$)" +           //no white spaces
@@ -55,14 +49,14 @@ public class LoginActivity extends AppCompatActivity {
         txt_email = findViewById(R.id.email);
         txt_password = findViewById(R.id.password);
         ConstraintLayout parent = findViewById(R.id.pt);
-        parent.setOnTouchListener(new View.OnTouchListener() {
+        /**parent.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {//Set no error msg
                 txt_email.setError(null);
                 txt_password.setError(null);
                 return false;
             }
-        });
+        });**/
         btn_logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    //IM/2020/049 - Naduni
+    //IM/2020/025 - Naduni Rabel
     public void btnLogin(){
 
             String input_email = txt_email.getText().toString().trim();//get user email
@@ -135,10 +129,10 @@ public class LoginActivity extends AppCompatActivity {
               //  cannot be empty
                 showAlertDialog("Empty Fields", "Email and password cannot be empty.");
             }
-        //IM/2020/049 - Naduni
+        //IM/2020/025 - Naduni Rabel
     }
 
-    //IM/2020/049 - Naduni
+    //IM/2020/025 - Naduni Rabel
     //Show alert dialog box
     private void showAlertDialog(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -157,34 +151,49 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent=new Intent(this,SignUpActivity.class);
         startActivity(intent);
     }
+    //IM/2020/025 - Naduni Rabel
     private boolean validateEmail(){//Email validations
        String input_email = txt_email.getText().toString().trim();
 
        if(input_email.isEmpty()){
-          // txt_email.setError("Field cannot be empty");
+
            return false;
        } else if(!Patterns.EMAIL_ADDRESS.matcher(input_email).matches()){
-           txt_email.setError("Invalid email address");
+
+           return false;
        } else{
-          // txt_email.setError(null);
+
            return true;
        }
-       return false;
+
     }
+    //IM/2020/025 - Naduni Rabel
     private boolean validatePassword(){
         String input_password = txt_password.getText().toString().trim();
 
         if(input_password.isEmpty()){
-           // txt_password.setError("Field cannot be empty");
+
             return false;
         }else if(!PASSWORD_PATTERN.matcher(input_password).matches()){
-            txt_password.setError("Invalid Password");
+
+            return false;
         } else{
-          //  txt_password.setError(null);
+
             return true;
         }
-        return false;
+
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        // Hide the keyboard when the user touches outside the text areas
+        InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        View view = getCurrentFocus();
+        if (view == null) {
+            view = new View(this);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        return super.onTouchEvent(event);
     }
 }
-//IM/2020/049 - Naduni
+//IM/2020/025 - Naduni Rabel
 
