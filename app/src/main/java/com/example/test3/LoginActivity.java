@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
                     "(?=.*[a-zA-Z])" +      //any letter
                     "(?=.*[@#$%^&+=])" +    //at least 1 special character
                     "(?=\\S+$)" +           //no white spaces
-                    ".{4,}" +               //at least 4 characters
+                    ".{8,}" +               //at least 4 characters
                     "$");
     private Button btn_logIn;
     private TextView txt_signUp;
@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
 
             List<User> list = userClassObj.getList();//Get user details list
             if(!input_email.isEmpty() && !input_password.isEmpty()) {//check email & pwd are empty or not
-                if(validateEmail() & validatePassword()) {//Check validation
+               // if(validateEmail() & validatePassword()) {//Check validation
                     for (User user : list) {//Check email
                         if (user.getEmail().equals(input_email)) {
                             matchedUser = user;
@@ -120,10 +120,10 @@ public class LoginActivity extends AppCompatActivity {
                     //invalid username or password
                         showAlertDialog("Invalid Credentials", "Email not found.");
                     }
-                }
-                else{
+               // }
+               /* else{
                     showAlertDialog("Invalid Input", "Please enter valid email and password.");
-                }
+                }*/
             }
             else{
               //  cannot be empty
