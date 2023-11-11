@@ -50,9 +50,9 @@ public class HomeFragment extends Fragment {
 
         taskRecyclerView = v.findViewById(R.id.taskRecyclerView);
         taskRecyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(requireContext());//May be occur a problem
+        layoutManager = new LinearLayoutManager(requireContext());
         taskRecyclerView.setLayoutManager(layoutManager);
-        mAdapter = new ToDoAdapter(object.getTaskList(), requireContext());//May be occur a problem
+        mAdapter = new ToDoAdapter(object.getTaskList(), requireContext());
         taskRecyclerView.setAdapter(mAdapter);
 
         //Displaying the current date in the home page

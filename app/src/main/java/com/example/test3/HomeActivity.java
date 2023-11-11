@@ -34,7 +34,7 @@ public class HomeActivity extends AppCompatActivity {
         MenuItem item2 = menu.findItem(R.id.Notification);
         MenuItem item3 = menu.findItem(R.id.Profile);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();//select the fragment whitch need to display in the begining
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {    //Set btn navigation

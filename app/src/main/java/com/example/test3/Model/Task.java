@@ -1,3 +1,4 @@
+//IM/2020/049 - Gimhan Perera
 package com.example.test3.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -16,7 +17,7 @@ public class Task implements Parcelable {
 
 
 
-    public Task(int id, String title, String description, int year, int month, int date){
+    public Task(int id, String title, String description, int year, int month, int date){   //Constrain. Iniziate task data
         this.id=id;
         this.title = title;
         this.description = description;
@@ -116,7 +117,7 @@ public class Task implements Parcelable {
         return complete;
     }
 
-    public static Comparator<Task> TaskDateAscendingComparator = new Comparator<Task>() {
+    public static Comparator<Task> TaskDateAscendingComparator = new Comparator<Task>() {   //Sort the task
         @Override
         public int compare(Task tk1, Task tk2) {
             if((tk1.getYear()-tk2.getYear()) == 0){
